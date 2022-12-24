@@ -1,6 +1,8 @@
 export interface IComment{
     id: number
     parent: null | number
-    comment: string
-    createdAt: string
+    text: string
+    created_at: string
+    first_name: string
+    last_name: string
 }
