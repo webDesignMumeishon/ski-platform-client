@@ -1,15 +1,17 @@
+import { IComment } from "../interfaces/comments"
 
 
 type componentProps = {
-    title: string
+    comment: IComment
+    replies: IComment[] | []
 }
 
-const Comment = (props : componentProps) => {
-    console.log(props)
+const Comment = ({comment} : componentProps) => {
+
     return (
-        <div>
+        <div className="comment">
             This is a single comment
-            <p>{props.title}</p>
+            <p>{comment.comment}</p>
             
         </div>
     )
