@@ -5,3 +5,36 @@
     text-align: start;
 }
 
+.comment-header{
+    display: flex;
+    align-items: center;
+    // padding-right: 16px;
+    // padding-left: 16px;
+    padding: 10px;
+    color: #57606a;
+    background-color: #f6f8fa;
+    border-bottom: 1px solid #d0d7de;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.comment-main{
+    padding: 10px;
+}
+
+.clearfix::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.clearfix::before {
+    display: table;
+    content: "";
+}
+
+.comment-content{
+    background-color: white;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+}

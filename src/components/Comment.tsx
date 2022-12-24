@@ -13,8 +13,14 @@ const Comment = ({comment, replies} : componentProps) => {
             {/* <div className="comment-image-container">
                 <img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" alt="Placeholder" />
             </div> */}
-            <div className="comment-text">
-                {comment.comment}
+            <div className="comment-content">
+                <div className="comment-header">
+                    <h3>dougwilson commented on Sep 12, 2015</h3>
+                </div>
+
+                <div className="comment-main">
+                    {comment.comment}
+                </div>
             </div>
         </div>
     )

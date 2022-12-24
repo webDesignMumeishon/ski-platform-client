@@ -1,7 +1,7 @@
 
 function DiscussionSideBar() {
   return (
-    <div>
+    <div className="side-bar-container">
         <p>sidebar</p>
     </div>
   );
