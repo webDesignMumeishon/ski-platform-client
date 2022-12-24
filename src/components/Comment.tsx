@@ -1,16 +1,15 @@
 import { IComment } from "../interfaces/comments"
 
-
 type componentProps = {
     comment: IComment
     replies: IComment[] | []
 }
 
 type Reply = {
-    replies: IComment[] | []
+    reply: IComment
 }
 
-const Replies =  ({replies} : Reply) => {
+const Replies =  ({reply} : Reply) => {
     return (
         <div className="reply-container">
             <div className="reply-photo">
@@ -19,7 +18,7 @@ const Replies =  ({replies} : Reply) => {
 
             <div className="reply-content">
                 <p>
-                    {replies.map(reply => reply.text)}
+                    {reply.text}
                 </p>
             </div>
         </div>
@@ -28,8 +27,6 @@ const Replies =  ({replies} : Reply) => {
 
 
 const Comment = ({comment, replies} : componentProps) => {
-
-    console.log(comment)
 
     return (
         <div className="comment-container">
@@ -45,7 +42,11 @@ const Comment = ({comment, replies} : componentProps) => {
                     {comment.text}
                 </div>
 
-                {replies.length > 0 && <Replies replies={replies}/>}
+                {replies.length > 0 && 
+                replies.map(reply => {
+                    return <Replies reply={reply}/>
+                })
+                }
                 
             </div>
         </div>
