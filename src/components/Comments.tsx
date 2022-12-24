@@ -30,20 +30,16 @@ const Comments = () => {
 
     if(comments !== null){
         return (
-            <div className="comments">
-                <h3 className="comments-title">This is a title</h3>
-                <div className="comments-container">
-                    {parentComments.map((comment: IComment) => {
-                        return (
-                            <Comment 
-                                key={comment.id}  
-                                comment={comment} 
-                                replies={getCommentReplies(comment.id)}
-                            />
-                        )
-                    })}
-                </div>
-    
+            <div className="comments-container">
+                {parentComments.map((comment: IComment) => {
+                    return (
+                        <Comment 
+                            key={comment.id}  
+                            comment={comment} 
+                            replies={getCommentReplies(comment.id)}
+                        />
+                    )
+                })}
             </div>
         ) 
     }
