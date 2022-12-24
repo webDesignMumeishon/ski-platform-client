@@ -19,9 +19,7 @@ const Replies =  ({replies} : Reply) => {
 
             <div className="reply-content">
                 <p>
-                Duis pharetra massa id tristique vulputate. Praesent ex tellus, ullamcorper nec sem in, tempus sollicitudin felis. 
-        Cras dignissim erat id enim aliquam ornare. Maecenas varius odio a erat lacinia, sit amet lacinia nibh varius. Vivamus ut ligula vehicula, 
-        bibendum leo vel, tempor nulla. Proin id vestibulum ipsum. Aliquam ut sapien turpis. Sed mauris arcu, euismod vel ante non, vehicula faucibus diam. 
+                    {replies.map(reply => reply.text)}
                 </p>
             </div>
         </div>
@@ -47,7 +45,8 @@ const Comment = ({comment, replies} : componentProps) => {
                     {comment.text}
                 </div>
 
-                <Replies replies={replies}/>
+                {replies.length > 0 && <Replies replies={replies}/>}
+                
             </div>
         </div>
     )
