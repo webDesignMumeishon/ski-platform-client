@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react"
-import axios from "axios"
+import axios, {AxiosResponse} from "axios"
 
 import Comment from "./Comment"
 import { IComment } from "../interfaces/comments"
 
+type CommentsStateProps = [] | IComment[]
+
 const Comments = () => {
 
-    const [comments, setComments] = useState<any>(null)
+    const [comments, setComments] = useState<CommentsStateProps>([])
 
     useEffect(() => {
         const getComments = async () => {
-            const {data} = await axios('http://localhost:3000/comment/')
-            setComments(data)
+            const response : AxiosResponse<IComment[]> = await axios('http://localhost:3000/comment/')
+            const comments = response.data
+            setComments(comments)
         }
         getComments()
     }, [])
@@ -27,7 +30,6 @@ const Comments = () => {
             </div>
         ) 
     }
-    console.log(3, 'withOutComments')
 
     return (
         <div>
