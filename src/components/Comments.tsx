@@ -34,7 +34,13 @@ const Comments = () => {
                 <h3 className="comments-title">This is a title</h3>
                 <div className="comments-container">
                     {parentComments.map((comment: IComment) => {
-                        return <Comment key={comment.id} comment={comment} replies={getCommentReplies(comment.id)}/>
+                        return (
+                            <Comment 
+                                key={comment.id}  
+                                comment={comment} 
+                                replies={getCommentReplies(comment.id)}
+                            />
+                        )
                     })}
                 </div>
     
