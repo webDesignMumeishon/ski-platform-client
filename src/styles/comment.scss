@@ -43,7 +43,7 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 5px;
-    background-color: #F9F7F1;
+    background-color: #F9F9F9;
     border-left: black solid 5px;
 
 
@@ -55,6 +55,9 @@
     }
 
     .reply-content{
+        p{
+            padding: 10px 0px;
+        }
         width: 80%;
     }
 }
