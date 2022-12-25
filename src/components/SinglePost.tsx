@@ -13,7 +13,7 @@ function SinglePost({post} : props){
             <div className="post-icon-likes">Icon</div>
             <div className="post-title-container">
                 <Link to={`post/${post.id}`}>{post.title}</Link>
-                <p>Max20 · 0 comments</p> 
+                <p>{post.first_name} {post.last_name} · {post.count} comments</p> 
             </div>
         </div>
     )

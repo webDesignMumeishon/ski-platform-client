@@ -1,5 +1,8 @@
 export interface IPost{
     id: number
     title: string
-    createdAt: Date
+    created_at: Date
+    count: string
+    first_name: string
+    last_name: string
 }
