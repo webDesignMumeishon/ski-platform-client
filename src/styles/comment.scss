@@ -1,3 +1,5 @@
+@import '_colors';
+
 .comment-container{
     position: relative;
     margin-left: -10px;
@@ -15,7 +17,7 @@
             padding: 10px;
             color: #57606a;
             font-size: 16px;
-            background-color: #f6f8fa;
+            background-color: $secondary-color;
             border-bottom: 1px solid #d0d7de;
             border-top-left-radius: 6px;
             border-top-right-radius: 6px;
@@ -43,8 +45,8 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 5px;
-    background-color: #F9F9F9;
-    border-left: black solid 5px;
+    background-color: $terciary-color;
+    border-left: $primary-navy-blue solid 5px;
 
 
     .reply-photo{
