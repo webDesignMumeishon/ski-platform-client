@@ -1,0 +1,51 @@
+@import '_colors';
+
+.post-container{
+    display: flex;
+    align-items: center;
+    padding: 2%;
+    // background-color: $winter-palette-serenity;
+    // background-color: #b6cce2;
+    background-color: $winter-palette-dodger-blue;
+    color: #fff;
+    border-radius: 5px;
+
+
+    .post-icon-likes{
+        margin: 0px 10px;
+    }
+
+    .image-holder{
+        width: 28px;
+        height: 28px;
+        border-radius: 20px;
+
+        img{
+            width: 100%;
+            border-radius: 20px;
+        }
+    }
+
+    .post-title-container{
+        a{
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+        }
+        a:hover{
+            transition: background-color 180ms;
+            border-radius: 5px;
+            background-color: #1f364d;
+            border-radius: 2px;
+            box-shadow: 4px 0 0 3px #1f364d, -4px 0 0 3px #1f364d;
+            color: #fff;
+        }
+        a:visited {
+            color: #b6cce2;
+        }
+    }
+ 
+}

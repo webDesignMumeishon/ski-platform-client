@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios, {AxiosResponse} from "axios"
+import { useParams } from 'react-router-dom';
 
 import Comment from "./Comment"
 import { IComment } from "../interfaces/comments"
@@ -8,6 +9,7 @@ type CommentsStateProps = [] | IComment[]
 
 const Comments = () => {
 
+    let { postId } = useParams();
     const [comments, setComments] = useState<CommentsStateProps>([])
     const [parentComments, setParentComments] = useState<CommentsStateProps>([])
 
@@ -19,7 +21,7 @@ const Comments = () => {
 
     useEffect(() => {
         const getComments = async () => {
-            const response : AxiosResponse<IComment[]> = await axios('http://localhost:3000/post/1')
+            const response : AxiosResponse<IComment[]> = await axios(`http://localhost:3000/post/${postId}`)
             const comments = response.data
             const parentComments = comments.filter(comment => comment.parent === null)
             setParentComments(parentComments)
@@ -49,8 +51,6 @@ const Comments = () => {
             <h1>No Comments</h1>
         </div>
     )
-
-
 }
 
 
