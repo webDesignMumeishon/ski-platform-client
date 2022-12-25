@@ -19,7 +19,7 @@ const Comments = () => {
 
     useEffect(() => {
         const getComments = async () => {
-            const response : AxiosResponse<IComment[]> = await axios('http://localhost:3000/comment/')
+            const response : AxiosResponse<IComment[]> = await axios('http://localhost:3000/post/1')
             const comments = response.data
             const parentComments = comments.filter(comment => comment.parent === null)
             setParentComments(parentComments)
