@@ -21,7 +21,7 @@ const Comments = () => {
     }
 
     useEffect(() => {
-        const getComments = async () : Promise<void> => {
+        const fetchData = async () : Promise<void> => {
             if(postId !== undefined){
                 const response = await PostService.getComments(postId)
                 const comments = response.data
@@ -30,7 +30,7 @@ const Comments = () => {
                 setComments(comments)
             }
         }
-        getComments()
+        fetchData()
     }, []) //trigger only once after mounting component
 
     if(comments !== null){

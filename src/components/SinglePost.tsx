@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import {IPost} from '../interfaces/post'
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import HTTP from "../eums/http";
+import LikeService from "../service/LikeService";
 
 type props = {
     post : IPost
@@ -17,18 +18,7 @@ function SinglePost({post} : props){
     const likePostHandler = async () => {
         try{
             if(likePost === 0 || likePost === null){
-                const response = await axios.post(`http://localhost:4000/like/`, 
-                    {
-                        postId: post.id
-                    },
-                    {
-                        withCredentials: true,
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                )
-        
+                const response = await LikeService.likePost(post.id)
                 if(response.status === HTTP.STATUS_CREATED){
                     setLikePost(1)
                     setNumberLikes(() => (numberLikes + 1))
@@ -36,15 +26,8 @@ function SinglePost({post} : props){
     
             }
             else{
-                const response = await axios.delete(`http://localhost:4000/like/${post.id}`,
-                    {
-                        withCredentials: true,
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    }
-                )
-        
+                const response = await LikeService.unlikePost(post.id)
+
                 if(response.status === HTTP.STATUS_SUCCESS){
                     setLikePost(0)
                     setNumberLikes(() => (numberLikes - 1))
@@ -54,8 +37,6 @@ function SinglePost({post} : props){
         catch(err){
             alert(err)
         }
-
-
     }
 
     useEffect(() => {

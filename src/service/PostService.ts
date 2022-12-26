@@ -9,12 +9,12 @@ class PostService {
 
 	// GET
 	static async getListPosts(): Promise<AxiosResponse<IPost>> {
-        return await ServerFacade.getPostsList();
+        return await ServerFacade.getPostsList<IPost>();
 	}
 
 	// GET
     static async getComments(postId: string): Promise<AxiosResponse<IComment[]>> {
-        return await ServerFacade.getComments(postId);
+        return await ServerFacade.getComments<IComment[]>(postId);
 	}
 }
 

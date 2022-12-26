@@ -32,7 +32,22 @@ class ServerCommunicator {
             }
         )
     }
+
+    static async doDeleteRequest<T>(extension : string) : Promise<AxiosResponse<T>> {
+
+        const requestURL = `${this.baseURL}/${extension}` 
+
+        return await axios.delete<T>(requestURL,
+            {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+    }
 }
+
 
 
 

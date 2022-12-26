@@ -13,7 +13,7 @@ class UserService {
             password: "123455"
         }
 
-        return await ServerFacade.userLogin(userBody);
+        return await ServerFacade.userLogin<IUserLogged>(userBody);
 	}
 
  
