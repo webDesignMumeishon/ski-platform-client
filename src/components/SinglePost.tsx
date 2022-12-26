@@ -33,7 +33,7 @@ function SinglePost({post} : props){
 
     useEffect(() => {
         setLikePost(post.did_like)
-        setNumberLikes(Number(post.number_comments))
+        setNumberLikes(Number(post.number_likes))
     }, [])
 
     return (
