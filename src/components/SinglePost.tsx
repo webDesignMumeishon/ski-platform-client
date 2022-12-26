@@ -11,7 +11,6 @@ type props = {
 }
 
 function SinglePost({post} : props){
-
     const [likePost, setLikePost] = useState(0)
     const [numberLikes, setNumberLikes] = useState(0)
 
@@ -20,17 +19,31 @@ function SinglePost({post} : props){
         if(likePost === 0 || likePost === null){
             const response = await axios.post(`http://localhost:3000/like/`, {
                 userId: 1, 
-                postId: 2
+                postId: post.id
             })
     
             if(response.status === HTTP.STATUS_CREATED){
                 setLikePost(1)
                 setNumberLikes(() => (numberLikes + 1))
             }
-            else{
-                setLikePost(0)
-            }
+
         }
+        else{
+            const response = await axios.delete(`http://localhost:3000/like/`, {
+                headers: {},
+                data:{
+                    userId: 1, 
+                    postId: post.id
+                }
+            })
+    
+            if(response.status === HTTP.STATUS_SUCCESS){
+                setLikePost(0)
+                setNumberLikes(() => (numberLikes - 1))
+            }
+
+        }
+
     }
 
     useEffect(() => {
