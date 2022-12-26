@@ -9,7 +9,13 @@ function Posts() {
 
     useEffect(() => {
         const getPosts = async () => {
-            const response : AxiosResponse<any> = await axios(`http://localhost:3000/post/list/posts/${1}`)
+            const response : AxiosResponse<any> = await axios(`http://localhost:3000/post/list/posts`,
+            {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
             const postsList = response.data
             setPosts(postsList)
 
@@ -21,9 +27,36 @@ function Posts() {
         return <SinglePost post={post}/>
     })
 
+    const logIn = async () => {
+
+        try{
+            const result = await axios.post(`http://localhost:3000/user/log-in`, 
+                {
+                    email: "tomas@mail.com",
+                    password: "123455"
+                },
+                {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+    
+            if(result.status === 200){
+                console.log(result.data)
+                alert('Success')
+            }
+        }
+        catch(err){
+            alert('Failed to authenticate')
+        }
+    }
+
 
     return (
         <div className="posts-container">
+            <button onClick={logIn}>LOG IN</button>
             {posts.length > 0 && postMappedList}
         </div>
     );
