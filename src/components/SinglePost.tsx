@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import {IPost} from '../interfaces/post'
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
+import HTTP from "../eums/http";
 
 type props = {
     post : IPost
@@ -14,6 +15,7 @@ function SinglePost({post} : props){
     const [likePost, setLikePost] = useState(0)
     const [numberLikes, setNumberLikes] = useState(0)
 
+
     const likePostHandler = async () => {
         if(likePost === 0 || likePost === null){
             const response = await axios.post(`http://localhost:3000/like/`, {
@@ -21,7 +23,7 @@ function SinglePost({post} : props){
                 postId: 2
             })
     
-            if(response){
+            if(response.status === HTTP.STATUS_CREATED){
                 setLikePost(1)
                 setNumberLikes(() => (numberLikes + 1))
             }
