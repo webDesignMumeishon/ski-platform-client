@@ -7,7 +7,7 @@ class ServerCommunicator {
 
         const requestURL = `${this.baseURL}/${extension}`
         
-        const response = await axios.get<T>(requestURL,
+        return await axios.get<T>(requestURL,
             { 
                 params: queryParams,
                 withCredentials: true,
@@ -16,14 +16,13 @@ class ServerCommunicator {
                 }
             },
         )
-        return response
 	}
 
     static async doPostRequest<T, BodyType>(extension : string, body : BodyType) : Promise<AxiosResponse<T>> {
 
         const requestURL = `${this.baseURL}/${extension}` 
 
-        const response = await axios.post<T>(requestURL,
+        return await axios.post<T>(requestURL,
             body,
             {
                 withCredentials: true,
@@ -32,7 +31,6 @@ class ServerCommunicator {
                 }
             }
         )
-        return response
     }
 }
 
