@@ -9,7 +9,7 @@ function Posts() {
 
     useEffect(() => {
         const getPosts = async () => {
-            const response : AxiosResponse<any> = await axios('http://localhost:3000/post/list/posts')
+            const response : AxiosResponse<any> = await axios(`http://localhost:3000/post/list/posts/${1}`)
             const postsList = response.data
             setPosts(postsList)
         }
