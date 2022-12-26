@@ -20,6 +20,7 @@ function Posts() {
         return <SinglePost post={post}/>
     })
 
+
     return (
         <div className="posts-container">
             {posts.length > 0 && postMappedList}

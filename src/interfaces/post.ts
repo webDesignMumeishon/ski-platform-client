@@ -7,5 +7,5 @@ export interface IPost{
     number_likes: string
     first_name: string
     last_name: string
-    isincluded: number
+    did_like: number
 }
