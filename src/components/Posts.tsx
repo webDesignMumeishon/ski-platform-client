@@ -3,22 +3,16 @@ import { useEffect, useState } from "react";
 
 import {IPost} from '../interfaces/post'
 import SinglePost from "./SinglePost";
+import PostService from "../service/PostService";
 
 function Posts() {
     const [posts, setPosts] = useState<any>([])
 
     useEffect(() => {
         const getPosts = async () => {
-            const response : AxiosResponse<any> = await axios(`http://localhost:4000/post/list/posts`,
-            {
-                withCredentials: true,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            const response  = await PostService.getListPosts()
             const postsList = response.data
             setPosts(postsList)
-
         }
         getPosts()
     }, [])

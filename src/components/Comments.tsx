@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import Comment from "./Comment"
 import { IComment } from "../interfaces/comments"
+import PostService from "../service/PostService";
 
 type CommentsStateProps = [] | IComment[]
 
@@ -20,12 +21,14 @@ const Comments = () => {
     }
 
     useEffect(() => {
-        const getComments = async () => {
-            const response : AxiosResponse<IComment[]> = await axios(`http://localhost:4000/post/${postId}`)
-            const comments = response.data
-            const parentComments = comments.filter(comment => comment.parent === null)
-            setParentComments(parentComments)
-            setComments(comments)
+        const getComments = async () : Promise<void> => {
+            if(postId !== undefined){
+                const response = await PostService.getComments(postId)
+                const comments = response.data
+                const parentComments = comments.filter(comment => comment.parent === null)
+                setParentComments(parentComments)
+                setComments(comments)
+            }
         }
         getComments()
     }, []) //trigger only once after mounting component
