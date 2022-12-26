@@ -17,7 +17,7 @@ function SinglePost({post} : props){
     const likePostHandler = async () => {
         try{
             if(likePost === 0 || likePost === null){
-                const response = await axios.post(`http://localhost:3000/like/`, 
+                const response = await axios.post(`http://localhost:4000/like/`, 
                     {
                         postId: post.id
                     },
@@ -36,7 +36,7 @@ function SinglePost({post} : props){
     
             }
             else{
-                const response = await axios.delete(`http://localhost:3000/like/${post.id}`,
+                const response = await axios.delete(`http://localhost:4000/like/${post.id}`,
                     {
                         withCredentials: true,
                         headers: {

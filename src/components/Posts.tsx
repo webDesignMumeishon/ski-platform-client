@@ -9,7 +9,7 @@ function Posts() {
 
     useEffect(() => {
         const getPosts = async () => {
-            const response : AxiosResponse<any> = await axios(`http://localhost:3000/post/list/posts`,
+            const response : AxiosResponse<any> = await axios(`http://localhost:4000/post/list/posts`,
             {
                 withCredentials: true,
                 headers: {
@@ -30,7 +30,7 @@ function Posts() {
     const logIn = async () => {
 
         try{
-            const result = await axios.post(`http://localhost:3000/user/log-in`, 
+            const result = await axios.post(`http://localhost:4000/user/log-in`, 
                 {
                     email: "tomas@mail.com",
                     password: "123455"
