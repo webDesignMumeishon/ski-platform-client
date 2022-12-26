@@ -1,7 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 
-import {IPost} from '../interfaces/post'
-
 class ServerCommunicator {
 	static baseURL = 'http://localhost:4000';
 	
@@ -20,6 +18,22 @@ class ServerCommunicator {
         )
         return response
 	}
+
+    static async doPostRequest<T, BodyType>(extension : string, body : BodyType) : Promise<AxiosResponse<T>> {
+
+        const requestURL = `${this.baseURL}/${extension}` 
+
+        const response = await axios.post<T>(requestURL,
+            body,
+            {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+        return response
+    }
 }
 
 
