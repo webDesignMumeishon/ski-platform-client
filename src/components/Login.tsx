@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import UserService from '../service/UserService';
 import Message from '../eums/Message';
+import { Navigate } from "react-router-dom";
+import { useState } from 'react';
 
 function Copyright(props: any) {
   return (
@@ -32,6 +34,8 @@ const theme = createTheme();
 
 export default function Login() {
 
+  const [isLogged, setIsLogged] = useState(false)
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -44,13 +48,19 @@ export default function Login() {
 
         if(result.success){
             alert(Message.SUCCESS)
+            setIsLogged(true)
         }
         else{
             alert(Message.ERROR)
+            setIsLogged(false)
         }
     }
 
   };
+
+  if(isLogged){
+    return <Navigate to="/cities" replace={true} />
+  }
 
   return (
     <ThemeProvider theme={theme}>

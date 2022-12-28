@@ -6,20 +6,20 @@ import {LikeRequest} from '../request/Like';
 
 class LikeService {
 
-	// GET
-	static async likePost(postId : number) : Promise<LikeResponse> {
+        // GET
+        static async likePost(postId : number) : Promise<LikeResponse> {
 
         const request = new LikeRequest(postId)
 
-        return await ServerFacade.likePost(request);
-	}
+                return await ServerFacade.likePost(request);
+        }
 
-    //DELETE
-    static async unlikePost(postId : number): Promise<AxiosResponse<string>> {
+        //DELETE
+        static async unlikePost(postId : number): Promise<AxiosResponse<string>> {
 
-        return await ServerFacade.unlikePost<string>(postId);
+                return await ServerFacade.unlikePost<string>(postId);
 
-	}
+        }
 
  
 }

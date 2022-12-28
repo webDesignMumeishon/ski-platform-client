@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {IPost} from '../interfaces/post'
 import SinglePost from "./SinglePost";
 import PostService from "../service/PostService";
-import UserService from "../service/UserService";
 
 function Posts() {
     const [posts, setPosts] = useState<IPost[]>([])
@@ -21,24 +20,8 @@ function Posts() {
         return <SinglePost key={post.id} post={post}/>
     })
 
-    // const logIn = async () => {
-    //     try{
-    //         // const result = await UserService.userLogin()
-    
-    //         if(result.status === 200){
-    //             alert('Success')
-    //         }
-    //     }
-        
-    //     catch(err){
-    //         alert('Failed to authenticate')
-    //     }
-    // }
-
-
     return (
         <div className="posts-container">
-            {/* <button onClick={logIn}>LOG IN</button> */}
             {posts.length > 0 && postMappedList}
         </div>
     );
