@@ -26,7 +26,6 @@ function Posts() {
             const result = await UserService.userLogin()
     
             if(result.status === 200){
-                console.log(result.data)
                 alert('Success')
             }
         }
