@@ -1,5 +1,6 @@
+import { ILogin } from "../interfaces/user"
 
-class Login {
+class Login implements ILogin{
     private _email : string
     private _password: string
 
