@@ -4,6 +4,7 @@ import {
 import App from "../App";
 import Discussion from "../components/Discussion";
 import ErrorPage from "../components/ErrorPage";
+import Login from "../components/Login";
 import Posts from "../components/Posts";
 
 export default createBrowserRouter([
@@ -17,6 +18,10 @@ export default createBrowserRouter([
         element: <Posts />,
       },
     ],
+  },
+  {
+    path: "login",
+    element: <Login/>,
   },
   {
     path: "cities/post/:postId",
