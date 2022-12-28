@@ -21,24 +21,24 @@ function Posts() {
         return <SinglePost key={post.id} post={post}/>
     })
 
-    const logIn = async () => {
-        try{
-            const result = await UserService.userLogin()
+    // const logIn = async () => {
+    //     try{
+    //         // const result = await UserService.userLogin()
     
-            if(result.status === 200){
-                alert('Success')
-            }
-        }
+    //         if(result.status === 200){
+    //             alert('Success')
+    //         }
+    //     }
         
-        catch(err){
-            alert('Failed to authenticate')
-        }
-    }
+    //     catch(err){
+    //         alert('Failed to authenticate')
+    //     }
+    // }
 
 
     return (
         <div className="posts-container">
-            <button onClick={logIn}>LOG IN</button>
+            {/* <button onClick={logIn}>LOG IN</button> */}
             {posts.length > 0 && postMappedList}
         </div>
     );

@@ -6,6 +6,8 @@ import Login from '../request/Login';
 import LikeResponse from '../response/Like';
 import {LikeRequest} from '../request/Like';
 import { ILikeRequest } from '../interfaces/like';
+import { User } from '../response/User';
+import Message from '../eums/Message';
 
 
 class ServerFacade {
@@ -30,12 +32,34 @@ class ServerFacade {
 	}
 
 	//POST
-	static async userLogin<ResponseType>(login: Login) : Promise<AxiosResponse<ResponseType>> {
+	static async userLogin<ResponseType>(login: Login) : Promise<User> {
 
 		const urlPath = `${this.user}/log-in`;
 		const data = { email: login.email, password: login.password }
 
-		return await ServerCommunicator.doPostRequest<ILogin, any>(urlPath, data);
+		try{
+			const response = await ServerCommunicator.doPostRequest<ILogin, any>(urlPath, data);
+			return new User(
+				response.status, 
+				true, 
+				Message.SUCCESS, 
+				response.data.firstName, 
+				response.data.lastName,
+				response.data.email,
+				response.data.p_enabled
+			)
+
+		}catch(error){
+			return new User(
+				500, 
+				false, 
+				Message.ERROR, 
+				"", 
+				"",
+				"",
+				false
+			)
+		}
 	}
 
 	// POST
