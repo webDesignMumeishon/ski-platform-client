@@ -8,8 +8,8 @@ import { IPost } from '../interfaces/post';
 class PostService {
 
 	// GET
-	static async getListPosts(): Promise<AxiosResponse<IPost>> {
-        return await ServerFacade.getPostsList<IPost>();
+	static async getListPosts(): Promise<AxiosResponse<IPost[]>> {
+        return await ServerFacade.getPostsList<IPost[]>();
 	}
 
 	// GET

@@ -1,4 +1,3 @@
-import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 
 import {IPost} from '../interfaces/post'
@@ -7,7 +6,7 @@ import PostService from "../service/PostService";
 import UserService from "../service/UserService";
 
 function Posts() {
-    const [posts, setPosts] = useState<any>([])
+    const [posts, setPosts] = useState<IPost[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,7 +18,7 @@ function Posts() {
     }, [])
 
     const postMappedList = posts.map((post : IPost) => {
-        return <SinglePost post={post}/>
+        return <SinglePost key={post.id} post={post}/>
     })
 
     const logIn = async () => {
