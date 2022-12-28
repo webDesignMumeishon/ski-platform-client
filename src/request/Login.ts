@@ -1,5 +1,5 @@
 
-class UserLogin {
+class Login {
     private _email : string
     private _password: string
 
@@ -18,4 +18,4 @@ class UserLogin {
 }
 
 
-export default UserLogin
+export default Login

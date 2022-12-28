@@ -3,6 +3,7 @@ import { AxiosResponse } from 'axios';
 import { ILikePostBody } from '../interfaces/like';
 import ServerCommunicator from './ServerCommunicator';
 import { IUserLogin } from '../interfaces/user';
+import Login from '../request/Login';
 
 
 
@@ -28,7 +29,7 @@ class ServerFacade {
 	}
 
 	//POST
-	static async userLogin<T>(user: IUserLogin) : Promise<AxiosResponse<T>> {
+	static async userLogin<T>(user: Login) : Promise<AxiosResponse<T>> {
 
 		const urlPath = `${this.user}/log-in`;
 
