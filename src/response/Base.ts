@@ -14,7 +14,7 @@ class Base {
     }
 
     get success() : boolean {
-        return this.success
+        return this._success
     }
 
     get message() : string {

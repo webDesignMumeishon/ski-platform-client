@@ -8,7 +8,7 @@ export class LikeRequest implements ILikeRequest{
     }
 
     get postId(){
-        return this._postId
+        return this._postId;
     }
 }
 
