@@ -5,7 +5,7 @@ import App from "../App";
 import Discussion from "../components/Discussion";
 import ErrorPage from "../components/ErrorPage";
 import Login from "../components/Login";
-import Posts from "../components/Posts";
+import Posts, { loader as rootLoader } from "../components/Posts";
 
 export default createBrowserRouter([
   {
@@ -15,6 +15,7 @@ export default createBrowserRouter([
     children: [
       {
         path: "cities/",
+        loader: rootLoader,
         element: <Posts />,
       },
     ],

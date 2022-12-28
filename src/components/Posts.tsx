@@ -1,28 +1,26 @@
-import { useEffect, useState } from "react";
+import {
+    useLoaderData,
+} from "react-router-dom";
 
 import {IPost} from '../interfaces/post'
 import SinglePost from "./SinglePost";
 import PostService from "../service/PostService";
 
+export async function loader() : Promise<IPost[]> {
+    const list = await PostService.getListPosts()
+    return list.data;
+}
+
 function Posts() {
-    const [posts, setPosts] = useState<IPost[]>([])
+    const list = (useLoaderData() as IPost[]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response  = await PostService.getListPosts()
-            const postsList = response.data
-            setPosts(postsList)
-        }
-        fetchData()
-    }, [])
-
-    const postMappedList = posts.map((post : IPost) => {
+    const postMappedList = list.map((post : IPost) => {
         return <SinglePost key={post.id} post={post}/>
     })
 
     return (
         <div className="posts-container">
-            {posts.length > 0 && postMappedList}
+            {postMappedList}
         </div>
     );
 }
