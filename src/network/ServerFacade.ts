@@ -29,12 +29,12 @@ class ServerFacade {
 	}
 
 	//POST
-	static async userLogin<T>(login: Login) : Promise<AxiosResponse<T>> {
+	static async userLogin<ResponseType>(login: Login) : Promise<AxiosResponse<ResponseType>> {
 
 		const urlPath = `${this.user}/log-in`;
 		const data = { email: login.email, password: login.password }
 
-		return await ServerCommunicator.doPostRequest<T, ILogin>(urlPath, data);
+		return await ServerCommunicator.doPostRequest<ResponseType, ILogin>(urlPath, data);
 	}
 
 	// POST
