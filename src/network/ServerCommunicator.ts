@@ -18,11 +18,11 @@ class ServerCommunicator {
         )
 	}
 
-    static async doPostRequest<T, BodyType>(extension : string, body : BodyType) : Promise<AxiosResponse<T>> {
+    static async doPostRequest<ResponseType, RequestType>(extension : string, body : RequestType) : Promise<AxiosResponse<ResponseType>> {
 
         const requestURL = `${this.baseURL}/${extension}` 
 
-        return await axios.post<T>(requestURL,
+        return await axios.post<ResponseType>(requestURL,
             body,
             {
                 withCredentials: true,

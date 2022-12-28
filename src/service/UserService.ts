@@ -9,9 +9,9 @@ class UserService {
 	// GET
 	static async userLogin(): Promise<AxiosResponse<IUserLogged>> {
 
-        const userBody = new Login('tomas@mail.com', '123455')
+        const login = new Login('tomas@mail.com', '123455')
 
-        return await ServerFacade.userLogin<IUserLogged>(userBody);
+        return await ServerFacade.userLogin<IUserLogged>(login);
 	}
 
  
