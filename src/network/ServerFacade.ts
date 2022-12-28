@@ -1,10 +1,11 @@
 import { AxiosResponse } from 'axios';
 
-import { ILikePostBody } from '../interfaces/like';
 import ServerCommunicator from './ServerCommunicator';
 import { ILogin } from '../interfaces/user';
 import Login from '../request/Login';
-
+import LikeResponse from '../response/Like';
+import {LikeRequest} from '../request/Like';
+import { ILikeRequest } from '../interfaces/like';
 
 
 class ServerFacade {
@@ -34,15 +35,33 @@ class ServerFacade {
 		const urlPath = `${this.user}/log-in`;
 		const data = { email: login.email, password: login.password }
 
-		return await ServerCommunicator.doPostRequest<ResponseType, ILogin>(urlPath, data);
+		return await ServerCommunicator.doPostRequest<ILogin, any>(urlPath, data);
 	}
 
 	// POST
-	static async likePost<T>(body: ILikePostBody) : Promise<AxiosResponse<T>> {
+	static async likePost<ResponseType>(request: LikeRequest) : Promise<LikeResponse> {
 
 		const urlPath = `${this.like}/`;
+		const body = {postId: request.postId}
 
-		return await ServerCommunicator.doPostRequest<T, ILikePostBody>(urlPath, body);
+		try{
+			const response = await ServerCommunicator.doPostRequest<ILikeRequest, ResponseType>(urlPath, body);
+
+			return new LikeResponse(
+				response.status,
+				true,
+				'Success'
+			)
+
+		}
+		catch(error){
+			console.error(error)
+			return new LikeResponse(
+				500,
+				false,
+				'Success'
+			)
+		}
 	}
 
 	// DELETE

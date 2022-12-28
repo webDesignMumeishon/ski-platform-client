@@ -1,3 +1,3 @@
-export interface ILikePostBody{
+export interface ILikeRequest{
     postId : number
 }

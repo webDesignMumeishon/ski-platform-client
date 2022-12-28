@@ -19,15 +19,13 @@ function SinglePost({post} : props){
         try{
             if(likePost === 0 || likePost === null){
                 const response = await LikeService.likePost(post.id)
-                if(response.status === HTTP.STATUS_CREATED){
+                if(response.code === HTTP.STATUS_CREATED){
                     setLikePost(1)
                     setNumberLikes(() => (numberLikes + 1))
                 }
-    
             }
             else{
                 const response = await LikeService.unlikePost(post.id)
-
                 if(response.status === HTTP.STATUS_SUCCESS){
                     setLikePost(0)
                     setNumberLikes(() => (numberLikes - 1))
