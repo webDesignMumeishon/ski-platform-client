@@ -5,13 +5,14 @@ import logo from './logo.svg';
 import './App.css';
 import Discussion from './components/Discussion';
 import Posts from './components/Posts';
-
+import { NavigateBefore } from '@mui/icons-material';
+import Navbar from './components/Navbar'
 
 function App() {
   return (
     <div>
-      <h1>This is App component </h1>
-      <Outlet />
+        <Navbar/>
+        <Outlet />
     </div>
   );
 }
