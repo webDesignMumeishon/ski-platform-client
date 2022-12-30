@@ -50,7 +50,7 @@ function SinglePost({post} : props){
                 <span className="text">{numberLikes}</span>         
             </div>
             <div className="post-title-container">
-                <Link to={`post/${post.id}`}>{post.title}</Link>
+                <Link to={`${post.id}`}>{post.title}</Link>
                 <p>{post.first_name} {post.last_name} · {post.number_comments} comments</p> 
             </div>
         </div>

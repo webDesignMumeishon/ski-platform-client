@@ -59,7 +59,7 @@ export default function Login() {
   };
 
   if(isLogged){
-    return <Navigate to="/cities" replace={true} />
+    return <Navigate to="/colorado/breck/post" replace={true} />
   }
 
   return (
