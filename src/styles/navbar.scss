@@ -1,0 +1,8 @@
+@import '_colors';
+
+.navbar-container{
+    z-index: 100000;
+    background-color: $winter-palette-dodger-blue;
+    position: fixed;
+    width: 100%;
+}
