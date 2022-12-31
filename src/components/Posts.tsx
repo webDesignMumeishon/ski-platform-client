@@ -20,7 +20,6 @@ function Posts() {
 
     return (
         <div className="posts-container">
-            <h1>Post</h1>
             {postMappedList}
         </div>
     );
