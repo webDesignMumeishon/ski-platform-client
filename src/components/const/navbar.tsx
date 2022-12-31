@@ -1,16 +1,9 @@
-import { ReactElement } from "react";
 import ForumIcon from '@mui/icons-material/Forum';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import SummarizeIcon from '@mui/icons-material/Summarize';
+import {IListItem} from '../../interfaces/list'
 
-interface NavBarItems {
-    id: number,
-    Icon: ReactElement,
-    label: string,
-    route: string
-}
-
-const navbarItems : NavBarItems[] = [
+const navbarItems : IListItem[] = [
     {
         id: 0,
         Icon: <SummarizeIcon/>,

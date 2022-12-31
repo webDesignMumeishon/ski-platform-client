@@ -20,6 +20,7 @@ import { Outlet, useNavigate } from "react-router-dom"
 
 import {capitalizeFirstLetter} from '../utils/handleWords'
 import navbarItems from './const/navbar'
+import userItems from './const/user'
 
 const drawerWidth = 240;
 
@@ -63,18 +64,18 @@ function ResponsiveDrawer(props: Props) {
       </List>
       <Divider sx={{backgroundColor: '#f7f7f88c'}}/>
       {/* Maybe here user settings */}
-      {/* <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+      <List>
+        {userItems.map((item) => (
+          <ListItem key={item.id} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              <ListItemIcon sx={{color: '#FFF'}}>
+                {item.Icon}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
         ))}
-      </List> */}
+      </List>
     </div>
   );
 
