@@ -2,17 +2,14 @@ import { AxiosResponse } from 'axios';
 
 import ServerCommunicator from './ServerCommunicator';
 import { ILogin } from '../interfaces/user';
+import { IPostListRequest } from '../interfaces/post';
 import Login from '../request/Login';
 import LikeResponse from '../response/Like';
 import {LikeRequest} from '../request/Like';
 import { ILikeRequest } from '../interfaces/like';
 import { User } from '../response/User';
 import Message from '../eums/Message';
-
-interface IPostListRequest{
-	city: string,
-	state: string
-}
+import { PostListRequest } from '../request/Post';
 
 
 class ServerFacade {
@@ -21,14 +18,11 @@ class ServerFacade {
     static like = 'like'
 
 	// GET
-	static async getPostsList<T>(): Promise<AxiosResponse<T>> {
+	static async getPostsList<T>(post: PostListRequest): Promise<AxiosResponse<T>> {
         
 		const urlPath = `${this.post}/list/posts`;
 
-		const queryParams = {
-			city: 'Breckenridge',
-			state: 'Colorado'
-		}
+		const queryParams = { city: post.city, state: post.state }
 
 		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath, queryParams);
 	}

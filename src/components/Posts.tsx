@@ -6,8 +6,8 @@ import {IPost} from '../interfaces/post'
 import SinglePost from "./SinglePost";
 import PostService from "../service/PostService";
 
-export async function loader() : Promise<IPost[]> {
-    const list = await PostService.getListPosts()
+export async function loader(context: any) : Promise<IPost[]> {
+    const list = await PostService.getListPosts(context.params.center, context.params.state)
     return list.data;
 }
 

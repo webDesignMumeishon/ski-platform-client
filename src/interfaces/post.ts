@@ -9,3 +9,8 @@ export interface IPost{
     last_name: string
     did_like: number
 }
+
+export interface IPostListRequest{
+	city: string,
+	state: string
+}
