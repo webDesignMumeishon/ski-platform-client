@@ -11,12 +11,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useParams } from 'react-router-dom';
-import { Link, Outlet, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 
 import navbarItems from './const/navbar'
 
@@ -94,12 +93,13 @@ function ResponsiveDrawer(props: Props) {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          backgroundColor: '#016fac',
-          ml: { sm: `${drawerWidth}px` },
+          // width: { sm: `calc(100% - ${drawerWidth}px)` },
+          // ml: { sm: `${drawerWidth}px` },
+          backgroundColor: '#005A9C',
+          boxShadow: 'none'
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{minHeight: '45px !important'}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -109,8 +109,8 @@ function ResponsiveDrawer(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+          <Typography sx={{fontSize: '16px'}} noWrap component="div">
+            Ski Resorts
           </Typography>
         </Toolbar>
       </AppBar>
@@ -130,7 +130,13 @@ function ResponsiveDrawer(props: Props) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            // These are the styles props for the hidden drawer
+            '& .MuiDrawer-paper': { 
+              boxSizing: 'border-box', 
+              width: drawerWidth, 
+              backgroundColor: '#24292f',
+              color: '#FFF'
+            },
           }}
         >
 
@@ -138,14 +144,16 @@ function ResponsiveDrawer(props: Props) {
         </Drawer>
         <Drawer
           variant="permanent"
+          // These re the style props for the permanent drawer in full screen sizes
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': 
             { 
               boxSizing: 'border-box', 
-              backgroundColor: '#016fac',
+              backgroundColor: '#24292f',
               color: '#FFF',
-              width: drawerWidth 
+              width: drawerWidth , 
+              zIndex: 0,            
             },
           }}
           open

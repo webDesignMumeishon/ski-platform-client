@@ -6,7 +6,6 @@ const Home = () => {
 
     return (
         <div>
-            <h1>This is Home</h1>
             <ResponsiveDrawer/>
         </div>
     )
