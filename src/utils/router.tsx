@@ -1,6 +1,6 @@
-import {
-    createBrowserRouter,
-} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+
+
 import App from "../App";
 import Discussion from "../components/Discussion";
 import ErrorPage from "../components/ErrorPage";
@@ -8,6 +8,7 @@ import Home from "../components/Home";
 import Login from "../components/Login";
 import Posts, { loader as rootLoader } from "../components/Posts";
 import Report from "../components/Report";
+import Market from "../components/Market";
 
 export default createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export default createBrowserRouter([
           {
             path: "/:state/:center/post/:postId",
             element: <Discussion />,
+          },
+          {
+            path: "/:state/:center/market",
+            element: <Market />,
           }
         ]
       },
