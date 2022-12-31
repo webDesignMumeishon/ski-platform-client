@@ -9,6 +9,11 @@ import { ILikeRequest } from '../interfaces/like';
 import { User } from '../response/User';
 import Message from '../eums/Message';
 
+interface IPostListRequest{
+	city: string,
+	state: string
+}
+
 
 class ServerFacade {
     static post = 'post'
@@ -20,7 +25,12 @@ class ServerFacade {
         
 		const urlPath = `${this.post}/list/posts`;
 
-		return await ServerCommunicator.doGetRequest<T>(urlPath);
+		const queryParams = {
+			city: 'Breckenridge',
+			state: 'Colorado'
+		}
+
+		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath, queryParams);
 	}
 
     //GET
