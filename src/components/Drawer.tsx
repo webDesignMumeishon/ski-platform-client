@@ -135,7 +135,8 @@ function ResponsiveDrawer(props: Props) {
               boxSizing: 'border-box', 
               width: drawerWidth, 
               backgroundColor: '#24292f',
-              color: '#FFF'
+              color: '#FFF',
+              borderRight: '2px solid #f7f7f88c'            
             },
           }}
         >
@@ -152,8 +153,9 @@ function ResponsiveDrawer(props: Props) {
               boxSizing: 'border-box', 
               backgroundColor: '#24292f',
               color: '#FFF',
-              width: drawerWidth , 
-              zIndex: 0,            
+              width: drawerWidth, 
+              zIndex: 0,
+              borderRight: '2px solid #f7f7f88c'            
             },
           }}
           open
