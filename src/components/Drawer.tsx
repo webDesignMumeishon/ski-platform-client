@@ -46,8 +46,8 @@ function ResponsiveDrawer(props: Props) {
   const drawer = (
     <div>
       <Toolbar />
-      {/* <Divider sx={{backgroundColor: '#f7f7f88c'}}/> */}
       <p color='#243648' style={{color: '#f7f7f88c', padding: '10px'}}>{capitalizeFirstLetter(center)}, {capitalizeFirstLetter(state)}</p>
+      <Divider sx={{backgroundColor: '#f7f7f88c'}}/>
       <List>
         {navbarItems.map((item) => (
           <ListItem key={item.id} disablePadding>
