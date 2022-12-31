@@ -63,7 +63,6 @@ function ResponsiveDrawer(props: Props) {
         ))}
       </List>
       <Divider sx={{backgroundColor: '#f7f7f88c'}}/>
-      {/* Maybe here user settings */}
       <List>
         {userItems.map((item) => (
           <ListItem key={item.id} disablePadding>

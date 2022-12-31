@@ -7,7 +7,7 @@ const userItems : IListItem[] = [
         id: 0,
         Icon: <SettingsIcon/>,
         label: 'Settings',
-        route: 'report'
+        route: 'settings'
     },
 ]
 

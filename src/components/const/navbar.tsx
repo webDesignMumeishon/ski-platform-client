@@ -1,6 +1,8 @@
+import RestaurantIcon from '@mui/icons-material/Restaurant';
 import ForumIcon from '@mui/icons-material/Forum';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import SummarizeIcon from '@mui/icons-material/Summarize';
+
 import {IListItem} from '../../interfaces/list'
 
 const navbarItems : IListItem[] = [
@@ -21,6 +23,12 @@ const navbarItems : IListItem[] = [
         Icon: <StorefrontIcon/>,
         label: 'Market',
         route: 'market'
+    },
+    {
+        id: 3,
+        Icon: <RestaurantIcon/>,
+        label: 'Restaurants',
+        route: 'restaurants'
     },
 ]
 
