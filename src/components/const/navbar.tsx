@@ -1,7 +1,7 @@
-import SummarizeIcon from '@mui/icons-material/Summarize';
-import FeedIcon from '@mui/icons-material/Feed';
-import StorefrontIcon from '@mui/icons-material/Storefront';
 import { ReactElement } from "react";
+import ForumIcon from '@mui/icons-material/Forum';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import SummarizeIcon from '@mui/icons-material/Summarize';
 
 interface NavBarItems {
     id: number,
@@ -19,7 +19,7 @@ const navbarItems : NavBarItems[] = [
     },
     {
         id: 1,
-        Icon: <FeedIcon/>,
+        Icon: <ForumIcon/>,
         label: 'Post',
         route: 'post'
     },

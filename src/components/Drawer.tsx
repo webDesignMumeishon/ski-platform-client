@@ -15,7 +15,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { useParams } from 'react-router-dom';
 import { Link, Outlet, useNavigate } from "react-router-dom"
+
 import navbarItems from './const/navbar'
 
 const drawerWidth = 240;
@@ -33,15 +35,26 @@ function ResponsiveDrawer(props: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const navigate = useNavigate();
 
+  const {state, center} = useParams()
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const capitalizeFirstLetter = (word : string | undefined) => {
+    if(typeof word === 'string'){
+      const leftPart = word[0].toUpperCase()
+      const rightPart = word.slice(1)
+      return leftPart + rightPart
+    }
+    return ''
+  }
 
   const drawer = (
     <div>
       <Toolbar />
       {/* <Divider sx={{backgroundColor: '#f7f7f88c'}}/> */}
-
+      <p color='#243648' style={{color: '#f7f7f88c', padding: '10px'}}>{capitalizeFirstLetter(center)}, {capitalizeFirstLetter(state)}</p>
       <List>
         {navbarItems.map((item) => (
           <ListItem key={item.id} disablePadding>
@@ -120,6 +133,7 @@ function ResponsiveDrawer(props: Props) {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
+
           {drawer}
         </Drawer>
         <Drawer
@@ -136,6 +150,7 @@ function ResponsiveDrawer(props: Props) {
           }}
           open
         >
+
           {drawer}
         </Drawer>
       </Box>
