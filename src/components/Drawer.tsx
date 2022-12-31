@@ -17,6 +17,8 @@ import Typography from '@mui/material/Typography';
 import { useParams } from 'react-router-dom';
 import { Outlet, useNavigate } from "react-router-dom"
 
+
+import {capitalizeFirstLetter} from '../utils/handleWords'
 import navbarItems from './const/navbar'
 
 const drawerWidth = 240;
@@ -39,15 +41,6 @@ function ResponsiveDrawer(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  const capitalizeFirstLetter = (word : string | undefined) => {
-    if(typeof word === 'string'){
-      const leftPart = word[0].toUpperCase()
-      const rightPart = word.slice(1)
-      return leftPart + rightPart
-    }
-    return ''
-  }
 
   const drawer = (
     <div>
