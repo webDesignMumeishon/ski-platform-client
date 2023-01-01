@@ -7,7 +7,7 @@ import Discussion from "../components/Discussion";
 import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
 import Login from "../components/Login";
-import Posts, { loader as rootLoader } from "../components/Posts";
+import Posts, { loader as postsLoader } from "../components/Posts";
 import Resorts, {loader as resortLoader} from "../components/Resorts";
 import Report from "../components/Report";
 import Market from "../components/Market";
@@ -41,6 +41,10 @@ export default createBrowserRouter([
     loader: userLoader,
     children: [
       {
+        path: "login",
+        element: <Login/>,
+      },
+      {
         path: "resorts/",
         element: <Resorts />,
         loader: resortLoader,
@@ -56,7 +60,7 @@ export default createBrowserRouter([
           },
           {
             path: "/:state/:center/post",
-            loader: rootLoader,
+            loader: postsLoader,
             element: <Posts />,
           },
           {
@@ -67,13 +71,8 @@ export default createBrowserRouter([
             path: "/:state/:center/market",
             element: <Market />,
           },
-
         ]
-      },
-    ],
-  },
-  {
-    path: "login",
-    element: <Login/>,
-  },
+      }
+    ]
+  }
 ]);
