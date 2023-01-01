@@ -8,9 +8,9 @@ import ErrorPage from "../components/ErrorPage";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import Posts, { loader as rootLoader } from "../components/Posts";
+import Resorts, {loader as resortLoader} from "../components/Resorts";
 import Report from "../components/Report";
 import Market from "../components/Market";
-import Resorts from "../components/Resorts";
 
 
 export async function userLoader(context: any) : Promise<any> {
@@ -43,6 +43,7 @@ export default createBrowserRouter([
       {
         path: "resorts/",
         element: <Resorts />,
+        loader: resortLoader,
       },
       {
         path: ":state/:center",
