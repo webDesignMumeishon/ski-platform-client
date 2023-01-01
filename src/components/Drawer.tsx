@@ -1,6 +1,6 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import { useParams } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -12,7 +12,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import { useParams } from 'react-router-dom';
 import { Outlet, useNavigate } from "react-router-dom"
 
 
@@ -44,6 +43,11 @@ function ResponsiveDrawer(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  // This is for when refresing the page it navigates to the /path in the state
+  React.useEffect(() => {
+    navigate(selected)
+  }, [])
 
   const seletedDrawer = {
     '&.MuiButtonBase-root': {
