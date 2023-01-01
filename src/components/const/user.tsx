@@ -1,11 +1,12 @@
-import SettingsIcon from '@mui/icons-material/Settings';
+import { FiSettings } from 'react-icons/fi';
+
 import {IListItem} from '../../interfaces/list'
 
 
 const userItems : IListItem[] = [
     {
         id: 0,
-        Icon: <SettingsIcon/>,
+        Icon: <FiSettings/>,
         label: 'Settings',
         route: 'settings'
     },

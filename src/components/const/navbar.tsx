@@ -3,6 +3,10 @@ import ForumIcon from '@mui/icons-material/Forum';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import SummarizeIcon from '@mui/icons-material/Summarize';
 import { MdOutlineForum } from 'react-icons/md';
+import { RiStore2Line } from 'react-icons/ri';
+import { MdOutlineLocalGroceryStore } from 'react-icons/md';
+import { IoRestaurantOutline } from 'react-icons/io5';
+import { TiWeatherSnow } from 'react-icons/ti';
 
 
 import {IListItem} from '../../interfaces/list'
@@ -10,7 +14,7 @@ import {IListItem} from '../../interfaces/list'
 const navbarItems : IListItem[] = [
     {
         id: 0,
-        Icon: <SummarizeIcon/>,
+        Icon: <TiWeatherSnow/>,
         label: 'Report',
         route: 'report'
     },
@@ -22,13 +26,13 @@ const navbarItems : IListItem[] = [
     },
     {
         id: 2,
-        Icon: <StorefrontIcon/>,
+        Icon: <MdOutlineLocalGroceryStore/>,
         label: 'Market',
         route: 'market'
     },
     {
         id: 3,
-        Icon: <RestaurantIcon/>,
+        Icon: <IoRestaurantOutline/>,
         label: 'Restaurants',
         route: 'restaurants'
     },
