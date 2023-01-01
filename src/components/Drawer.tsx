@@ -32,14 +32,25 @@ interface Props {
 
 function ResponsiveDrawer(props: Props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const navigate = useNavigate();
 
+
+  const navigate = useNavigate();
   const {state, center} = useParams()
+
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [selected, setSeletected] = React.useState('report')
+
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const seletedDrawer = {
+    '&.MuiButtonBase-root': {
+      backgroundColor: '#F5F5F5',
+      color: '#000',
+    }
+  }
 
   const drawer = (
     <div>
@@ -49,11 +60,12 @@ function ResponsiveDrawer(props: Props) {
       <List>
         {navbarItems.map((item) => (
           <ListItem key={item.id} disablePadding>
-            <ListItemButton onClick={() => {
+            <ListItemButton sx={selected === item.route ? seletedDrawer : {}} onClick={() => {
                 navigate(item.route)
+                setSeletected(item.route)
                 handleDrawerToggle()
             }}>
-              <ListItemIcon sx={{color: '#FFF'}}>
+              <ListItemIcon sx={selected === item.route ?{} :{color: '#FFF'} }>
                 {item.Icon}
               </ListItemIcon>
               <ListItemText primary={item.label} />
