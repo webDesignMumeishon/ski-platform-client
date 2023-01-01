@@ -5,4 +5,29 @@
     background-color: $winter-palette-dodger-blue;
     position: fixed;
     width: 100%;
+    min-height: 40px;
+    color: #FFF !important;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 14px;
+
+    .nav-bar-wrapper{
+        p{
+            border: solid gray 1px;
+            margin-right: 10px;
+        }
+
+        a{
+            margin-right: 10px;
+            text-decoration: none;
+            color: #FFF;
+            cursor: pointer;
+        }
+
+        a:hover{
+            color: #bebfc1
+        }
+    }
+
 }
+

@@ -2,10 +2,11 @@
 
 * {
     margin: 0;
+    // color: #FFF; this will set the font color globally
 }
 
 body{
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-family: "Lato", -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
     font-size: 14px;
     line-height: 1.5;
     background-color: $winter-palette-alice-blue;
