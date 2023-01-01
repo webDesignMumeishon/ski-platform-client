@@ -11,6 +11,17 @@
     font-weight: 700;
     font-size: 14px;
 
+    a{
+        margin-right: 10px;
+        text-decoration: none;
+        color: #FFF;
+        cursor: pointer;
+    }
+
+    a:hover{
+        color: #bebfc1
+    }
+
     .nav-bar-wrapper{
 
         .search-input{
@@ -22,16 +33,7 @@
             margin-right: 10px;
         }
 
-        a{
-            margin-right: 10px;
-            text-decoration: none;
-            color: #FFF;
-            cursor: pointer;
-        }
 
-        a:hover{
-            color: #bebfc1
-        }
     }
 
 }

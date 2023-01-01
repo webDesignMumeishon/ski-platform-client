@@ -1,7 +1,4 @@
 import { Grid } from "@mui/material"
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import AddIcon from '@mui/icons-material/Add';
-import HdrPlusIcon from '@mui/icons-material/HdrPlus';
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -30,15 +27,7 @@ const Navbar = () => {
 
             <Grid container lg={1} md={1} sm={2}>
                 <Grid>
-                    <NotificationsIcon/>
-                </Grid>
-
-                <Grid>
-                    <AddIcon/>
-                </Grid>
-    
-                <Grid>
-                    <HdrPlusIcon/>
+                    <Link to='/login'>Login</Link>
                 </Grid>
             </Grid>
 
