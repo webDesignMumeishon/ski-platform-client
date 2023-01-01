@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import axios from "axios";
 
 
 import App from "../App";
@@ -9,7 +10,7 @@ import Login from "../components/Login";
 import Posts, { loader as rootLoader } from "../components/Posts";
 import Report from "../components/Report";
 import Market from "../components/Market";
-import axios from "axios";
+import Resorts from "../components/Resorts";
 
 
 export async function userLoader(context: any) : Promise<any> {
@@ -40,9 +41,14 @@ export default createBrowserRouter([
     loader: userLoader,
     children: [
       {
+        path: ":state/",
+        element: <Resorts />,
+      },
+      {
         path: ":state/:center",
         element: <Home />,
         children: [
+
           {
             path: "/:state/:center/report",
             element: <Report />,
@@ -59,7 +65,8 @@ export default createBrowserRouter([
           {
             path: "/:state/:center/market",
             element: <Market />,
-          }
+          },
+
         ]
       },
     ],
