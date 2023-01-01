@@ -2,6 +2,8 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import ForumIcon from '@mui/icons-material/Forum';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import SummarizeIcon from '@mui/icons-material/Summarize';
+import { MdOutlineForum } from 'react-icons/md';
+
 
 import {IListItem} from '../../interfaces/list'
 
@@ -14,7 +16,7 @@ const navbarItems : IListItem[] = [
     },
     {
         id: 1,
-        Icon: <ForumIcon/>,
+        Icon: <MdOutlineForum/>,
         label: 'Post',
         route: 'post'
     },

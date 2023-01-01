@@ -14,7 +14,7 @@ const Navbar = () => {
 
             <Grid xs={8} md={8} sm={7}>
                 <Grid container className="nav-bar-wrapper">
-                    <Grid xs={4}>
+                    <Grid xs={4} className='search-input'>
                         <label htmlFor="Search">
                             <input id="Search" placeholder="Search"/>
                         </label>
