@@ -159,7 +159,7 @@ function ResponsiveDrawer(props: Props) {
           flexGrow: 1, 
           p: 3, 
           width: { sm: `calc(100% - ${drawerWidth}px)` }, 
-          marginTop: '50px',
+          // marginTop: '50px',
           padding: '15px'
         }}
       >

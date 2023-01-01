@@ -41,7 +41,7 @@ export default createBrowserRouter([
     loader: userLoader,
     children: [
       {
-        path: ":state/",
+        path: "resorts/",
         element: <Resorts />,
       },
       {

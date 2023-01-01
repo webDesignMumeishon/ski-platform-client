@@ -3,7 +3,7 @@
 .navbar-container{
     z-index: 100000;
     background-color: $winter-palette-dodger-blue;
-    position: fixed;
+    position: relative;
     width: 100%;
     min-height: 40px;
     color: #FFF !important;
