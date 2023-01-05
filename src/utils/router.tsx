@@ -11,6 +11,7 @@ import Posts, { loader as postsLoader } from "../components/Posts";
 import Resorts, {loader as resortLoader} from "../components/Resorts";
 import Report from "../components/Report";
 import Market from "../components/Market";
+import Restaurants from "../components/Restaurants";
 
 
 export async function userLoader(context: any) : Promise<any> {
@@ -70,6 +71,10 @@ export default createBrowserRouter([
           {
             path: "/:state/:center/market",
             element: <Market />,
+          },
+          {
+            path: "/:state/:center/restaurants",
+            element: <Restaurants />,
           },
         ]
       }
