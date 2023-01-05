@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import axios, {AxiosResponse} from "axios"
 import { useParams } from 'react-router-dom';
 
 import Comment from "./Comment"
