@@ -2,6 +2,8 @@ import axios from "axios";
 import { Link, useLoaderData } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 
+import Resort from "./Resort";
+
 export async function loader(): Promise<any> {
   const result = await axios.get("http://localhost:4000/resort/resorts", {
     withCredentials: true,
@@ -23,11 +25,7 @@ const Resorts = () => {
     {
         list.map((resort: any) => {
             return (
-                <Grid item lg={2} md={3} sm={4} xs={6} style={{border: 'solid red 2px'}}>
-                    <Link to={`/${resort.state}/${resort.city}`}>
-                        {resort.city}, {resort.state}
-                    </Link>
-                </Grid>
+               <Resort resort={resort}/>
             );
         })
     }
