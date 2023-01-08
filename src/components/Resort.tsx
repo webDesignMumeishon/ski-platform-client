@@ -10,7 +10,7 @@ type PropsType = {
 
 const Resort = ({resort} : PropsType) => {
     return (
-        <Grid item lg={2} md={3} sm={4} xs={6} style={{border: 'solid red 2px'}}>
+        <Grid item lg={2} md={3} sm={4} xs={6} className='resort-container'>
             <Link to={`/${resort.state}/${resort.city}`}>
                 {resort.city}, {resort.state}
             </Link>
