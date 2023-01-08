@@ -18,9 +18,8 @@ const Resorts = () => {
   const list = useLoaderData() as any;
 
   return (
-    <Box>
-        <h1>Resorts</h1>
-        <Grid container>
+    <Box style={{padding: '20px'}}>
+        <Grid container >
         {
             list.map((resort: any) => {
                 return (
