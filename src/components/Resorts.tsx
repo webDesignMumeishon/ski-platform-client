@@ -19,18 +19,16 @@ const Resorts = () => {
 
   return (
     <Box>
-      <h1>Resorts</h1>
-
-    <Grid container style={{border: 'solid blue 2px'}}>
-    {
-        list.map((resort: any) => {
-            return (
-               <Resort resort={resort}/>
-            );
-        })
-    }
-    </Grid>
-
+        <h1>Resorts</h1>
+        <Grid container>
+        {
+            list.map((resort: any) => {
+                return (
+                <Resort resort={resort}/>
+                );
+            })
+        }
+        </Grid>
     </Box>
   );
 };
