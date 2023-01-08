@@ -12,7 +12,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 import { capitalizeFirstLetter } from "../utils/handleWords";
 import navbarItems from "./const/navbar";
@@ -31,7 +32,6 @@ interface Props {
 function ResponsiveDrawer(props: Props) {
   const { window } = props;
 
-  const navigate = useNavigate();
   const { state, center } = useParams();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -43,7 +43,7 @@ function ResponsiveDrawer(props: Props) {
 
   // This is for when refresing the page it navigates to the /path in the state
   React.useEffect(() => {
-    navigate(selected);
+    redirect(selected);
   }, []);
 
   const seletedDrawer = {
@@ -66,7 +66,7 @@ function ResponsiveDrawer(props: Props) {
             <ListItemButton
               sx={selected === item.route ? seletedDrawer : {}}
               onClick={() => {
-                navigate(item.route);
+                redirect(item.route);
                 setSeletected(item.route);
                 handleDrawerToggle();
               }}
