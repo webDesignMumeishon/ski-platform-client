@@ -12,28 +12,28 @@ import Report from "../components/Report";
 import Market from "../components/Market";
 import Restaurants from "../components/Restaurants";
 
-export async function userLoader(context: any): Promise<any> {
-  try {
-    const result = await axios.get("http://localhost:4000/user/me/personal", {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(result);
-    return result;
-  } catch (err) {
-    console.error(err);
-    return "";
-  }
-}
+// export async function userLoader(context: any): Promise<any> {
+//   try {
+//     const result = await axios.get("http://localhost:4000/user/me/personal", {
+//       withCredentials: true,
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     console.log(result);
+//     return result;
+//   } catch (err) {
+//     console.error(err);
+//     return "";
+//   }
+// }
 
 export default createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    loader: userLoader,
+    // loader: userLoader,
     children: [
       {
         path: "login",

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 
 import Resort from "./Resort";

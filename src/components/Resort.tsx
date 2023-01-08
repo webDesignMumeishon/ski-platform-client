@@ -17,7 +17,7 @@ const Resort = ({resort} : PropsType) => {
             </Grid>
 
             <Grid item  xs={11}>
-                <Link to={`/${resort.state}/${resort.city}`}>
+                <Link to={`/${resort.state}/${resort.city}/report`}>
                     {resort.city}, {resort.state}
                 </Link>
             </Grid>
