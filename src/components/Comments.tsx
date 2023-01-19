@@ -18,8 +18,12 @@ type CommentsStateProps = [] | IComment[]
 
 const Comments = () => {
 
-    let { postId } = useParams();
-    const [comments, setComments] = useState<CommentsStateProps>([])
+    let { postId} = useParams();
+    const [comments, 
+        setComments] = useState<CommentsStateProps
+        >([
+            
+        ])
     const [parentComments, setParentComments] = useState<CommentsStateProps>([])
 
     const getCommentReplies = (parentCommentId : number | null) => {
