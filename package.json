@@ -63,7 +63,7 @@
     "typescript": "^4.9.4"
   },
   "lint-staged": {
-    "src/**/*.{html,ts,tsx,scss}": [
+    "src/**/*.{html,ts,tsx,scss,js,jsx}": [
       "prettier --write"
     ],
     "src/**/*.ts": [
