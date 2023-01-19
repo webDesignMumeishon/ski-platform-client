@@ -5,6 +5,15 @@ import Comment from "./Comment"
 import { IComment } from "../interfaces/comments"
 import PostService from "../service/PostService";
 
+
+
+
+
+
+
+
+
+
 type CommentsStateProps = [] | IComment[]
 
 const Comments = () => {
