@@ -1,15 +1,15 @@
-import { IComment } from "../interfaces/comments";
+import { IComment } from '../interfaces/comments'
 
-type componentProps = {
-  comment: IComment;
-  replies: IComment[] | [];
-};
+interface componentProps {
+  comment: IComment
+  replies: IComment[] | []
+}
 
-type Reply = {
-  reply: IComment;
-};
+interface Reply {
+  reply: IComment
+}
 
-const Replies = ({ reply }: Reply) => {
+const Replies = ({ reply }: Reply): JSX.Element => {
   return (
     <div className="reply-container">
       <div className="reply-photo">
@@ -23,10 +23,10 @@ const Replies = ({ reply }: Reply) => {
         <p>{reply.text}</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-const Comment = ({ comment, replies }: componentProps) => {
+const Comment = ({ comment, replies }: componentProps): JSX.Element => {
   return (
     <div className="comment-container">
       {/* <div className="comment-image-container">
@@ -43,11 +43,11 @@ const Comment = ({ comment, replies }: componentProps) => {
 
         {replies.length > 0 &&
           replies.map((reply) => {
-            return <Replies reply={reply} />;
+            return <Replies key={reply.id} reply={reply} />
           })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Comment;
+export default Comment
