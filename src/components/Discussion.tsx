@@ -4,6 +4,7 @@ import DiscussionTitle from "./DiscussionTitle";
 
 function Discussion() {
   return (
+    //just a comment for testing
     <div className="discussion-container">
       <DiscussionTitle />
       <div className="discussion-bucket">
