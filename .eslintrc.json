@@ -2,7 +2,6 @@
     "parser": "@babel/eslint-parser",
     "extends": [
         "plugin:react/recommended",
-        "standard-with-typescript",
         "eslint:recommended"
     ],
     "parserOptions": {
