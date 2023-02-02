@@ -4,15 +4,13 @@ import ServerFacade from "../network/ServerFacade";
 import { IComment } from '../interfaces/comments';
 import { IPost } from '../interfaces/post';
 import { PostListRequest } from '../request/Post';
-
+//this is ok ?
 
 class PostService {
 
 	// GET
 	static async getListPosts(city: string, state: string): Promise<AxiosResponse<IPost[]>> {
-
 		const bodyRequest = new PostListRequest(city, state)
-
         return await ServerFacade.getPostsList<IPost[]>(bodyRequest);
 	}
 

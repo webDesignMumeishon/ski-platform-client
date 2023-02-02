@@ -6,18 +6,26 @@
         "eslint:recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 6,
         "sourceType": "module",
+        "parser": "@typescript-eslint/parser",
         "ecmaFeatures": {
             "jsx": true,
             "modules": true,
             "experimentalObjectRestSpread": true
         }
-      },
+    },
     "plugins": [
-        "react"
+        "react",
+        "@typescript-eslint"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "comma-dangle": 0,
+        "react/jsx-uses-vars": 1,
+        "react/display-name": 1,
+        "no-unused-vars": "warn",
+        "no-console": 1,
+        "no-unexpected-multiline": "warn"
     }
 }
