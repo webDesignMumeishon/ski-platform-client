@@ -1,8 +1,7 @@
 import ResponsiveDrawer from './Drawer'
 
-const Home = () => {
-
-    return <ResponsiveDrawer/>
+const Home = (): JSX.Element => {
+  return <ResponsiveDrawer />
 }
 
 export default Home
