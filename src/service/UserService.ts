@@ -7,6 +7,13 @@ class UserService {
 	// GET
 	static async userLogin (email: string, password: string): Promise<User> {
         const login = new Login(email, password)
+
+
+
+
+
+
+		
         return await ServerFacade.userLogin<IUserLogged>(login)
 	}
 }
