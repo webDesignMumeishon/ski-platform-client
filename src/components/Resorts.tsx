@@ -21,9 +21,9 @@ const Resorts = () => {
     <Box style={{padding: '20px'}}>
         <Grid container >
         {
-            list.map((resort: any) => {
+            list.map((resort: any, index: any) => {
                 return (
-                <Resort resort={resort}/>
+                <Resort key={index} resort={resort}/>
                 );
             })
         }

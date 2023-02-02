@@ -4,7 +4,7 @@ import ServerFacade from "../network/ServerFacade";
 import { IComment } from '../interfaces/comments';
 import { IPost } from '../interfaces/post';
 import { PostListRequest } from '../request/Post';
-//this is ok ?
+
 
 class PostService {
 

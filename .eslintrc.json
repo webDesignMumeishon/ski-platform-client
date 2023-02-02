@@ -1,11 +1,14 @@
 {
-    "parser": "@babel/eslint-parser",
+    "env": {
+        "browser": true
+    },
+    "parser": "@typescript-eslint/parser",
     "extends": [
         "plugin:react/recommended",
         "eslint:recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": "latest",
         "sourceType": "module",
         "parser": "@typescript-eslint/parser",
         "ecmaFeatures": {
@@ -26,5 +29,9 @@
         "no-unused-vars": "warn",
         "no-console": 1,
         "no-unexpected-multiline": "warn"
-    }
+    },
+    "globals": {
+        "JSX": "readonly",
+        "Window": "readonly"
+     }
 }

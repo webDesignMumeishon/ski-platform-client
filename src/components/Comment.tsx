@@ -9,7 +9,7 @@ interface Reply {
   reply: IComment
 }
 
-const Replies = ({ reply }: Reply): JSX.Element => {
+const Replies = ({ reply }: Reply) => {
   return (
     <div className="reply-container">
       <div className="reply-photo">
