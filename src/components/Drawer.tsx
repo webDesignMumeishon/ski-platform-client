@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { useParams } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -12,8 +11,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
+import { useParams } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { redirect } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 import { capitalizeFirstLetter } from "../utils/handleWords";
 import navbarItems from "./const/navbar";
@@ -29,9 +30,11 @@ function ResponsiveDrawer(props: Props) {
   const { window } = props;
 
   const { state, center } = useParams();
+  const navigate = useNavigate();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [selected, setSeletected] = React.useState("report");
+
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -39,7 +42,8 @@ function ResponsiveDrawer(props: Props) {
 
   // This is for when refresing the page it navigates to the /path in the state
   React.useEffect(() => {
-    redirect(selected);
+    console.log('React.useEffect refreshing')
+    navigate(selected);
   }, []);
 
   const seletedDrawer = {
@@ -62,8 +66,7 @@ function ResponsiveDrawer(props: Props) {
             <ListItemButton
               sx={selected === item.route ? seletedDrawer : {}}
               onClick={() => {
-                console.log('Working', item.route)
-                redirect(item.route);
+                navigate(item.route);
                 setSeletected(item.route);
                 handleDrawerToggle();
               }}
