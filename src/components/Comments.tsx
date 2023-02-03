@@ -30,7 +30,7 @@ const Comments = () => {
             }
         }
         fetchData()
-    }, []) //trigger only once after mounting component
+    }, [])
 
     if(comments !== null){
         return (

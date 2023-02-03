@@ -29,9 +29,6 @@ const Replies = ({ reply }: Reply) => {
 const Comment = ({ comment, replies }: componentProps): JSX.Element => {
   return (
     <div className="comment-container">
-      {/* <div className="comment-image-container">
-                <img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" alt="Placeholder" />
-            </div> */}
       <div className="comment-content">
         <div className="comment-header">
           <p>
