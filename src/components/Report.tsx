@@ -2,7 +2,12 @@
 
 const Report = () => {
     return (
-        <h1>Report</h1>
+        <div>
+            <h1>Report</h1>
+
+            <p>sdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadn</p>
+
+        </div>
     )
 }
 

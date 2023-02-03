@@ -39,7 +39,6 @@ function ResponsiveDrawer(props: Props) {
 
   // This is for when refresing the page it navigates to the /path in the state
   React.useEffect(() => {
-    console.log('React.useEffect refreshing')
     navigate(selected);
   }, []);
 
@@ -65,7 +64,9 @@ function ResponsiveDrawer(props: Props) {
               onClick={() => {
                 navigate(item.route);
                 setSeletected(item.route);
-                handleDrawerToggle();
+                if(mobileOpen){
+                  handleDrawerToggle();
+                }
               }}
             >
               <ListItemIcon
