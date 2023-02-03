@@ -32,7 +32,7 @@ const Comment = ({ comment, replies, index }: componentProps): JSX.Element => {
   const isFirstComment = index === 0
 
   return (
-    <div className="comment-container">
+    <div className="comment-container" style={{paddingTop: isFirstComment ? '0px' : ''}}>
       <div className="comment-content">
         <div className="comment-header">
           <p>
