@@ -35,10 +35,11 @@ const Comments = () => {
     if(comments !== null){
         return (
             <div className="comments-container">
-                {parentComments.map((comment: IComment) => {
+                {parentComments.map((comment: IComment, index : number) => {
                     return (
                         <Comment 
-                            key={comment.id}  
+                            key={comment.id}
+                            index={index}  
                             comment={comment} 
                             replies={getCommentReplies(comment.id)}
                         />

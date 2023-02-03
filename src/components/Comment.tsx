@@ -2,6 +2,7 @@ import { IComment } from '../interfaces/comments'
 // ok
 interface componentProps {
   comment: IComment
+  index: number
   replies: IComment[] | []
 }
 
@@ -26,7 +27,10 @@ const Replies = ({ reply }: Reply) => {
   )
 }
 
-const Comment = ({ comment, replies }: componentProps): JSX.Element => {
+const Comment = ({ comment, replies, index }: componentProps): JSX.Element => {
+
+  const isFirstComment = index === 0
+
   return (
     <div className="comment-container">
       <div className="comment-content">
