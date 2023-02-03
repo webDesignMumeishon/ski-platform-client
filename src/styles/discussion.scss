@@ -6,3 +6,17 @@
     margin: auto;
     justify-content: space-between;
 }
+
+.discussion-title-container{
+    position: relative;
+}
+
+.discussion-title-container::after {
+    content: "";
+    width: 100%;
+    border-bottom: solid 2px #d0d7de;
+    position: absolute;
+    left: 0;
+    top: 100;
+    z-index: 1;
+}
