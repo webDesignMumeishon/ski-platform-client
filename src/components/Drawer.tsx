@@ -44,7 +44,7 @@ function ResponsiveDrawer(props: Props) {
   // This is for when refresing the page it navigates to the /path in the state
   React.useEffect(() => {
     redirect(selected);
-  }, []);
+  }, [selected]);
 
   const seletedDrawer = {
     "&.MuiButtonBase-root": {
@@ -66,7 +66,8 @@ function ResponsiveDrawer(props: Props) {
             <ListItemButton
               sx={selected === item.route ? seletedDrawer : {}}
               onClick={() => {
-                redirect(item.route);
+                console.log('Working', item.route)
+                // redirect(item.route);
                 setSeletected(item.route);
                 handleDrawerToggle();
               }}
