@@ -1,5 +1,4 @@
-import { MdOutlineForum } from 'react-icons/md';
-import { MdOutlineLocalGroceryStore } from 'react-icons/md';
+import { MdOutlineForum, MdOutlineLocalGroceryStore } from 'react-icons/md';
 import { IoRestaurantOutline } from 'react-icons/io5';
 import { TiWeatherSnow } from 'react-icons/ti';
 

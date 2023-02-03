@@ -11,10 +11,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import { useParams } from "react-router-dom";
-import { Outlet } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-
+import { useParams, Outlet, useNavigate } from "react-router-dom";
 
 import { capitalizeFirstLetter } from "../utils/handleWords";
 import navbarItems from "./const/navbar";
