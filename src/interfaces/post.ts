@@ -14,3 +14,7 @@ export interface IPostListRequest{
 	city: string,
 	state: string
 }
+
+export interface ISinglePostRequest{
+	id: string,
+}

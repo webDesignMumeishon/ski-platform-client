@@ -9,7 +9,7 @@ import {LikeRequest} from '../request/Like';
 import { ILikeRequest } from '../interfaces/like';
 import { User } from '../response/User';
 import Message from '../eums/Message';
-import { PostListRequest } from '../request/Post';
+import { PostListRequest, SinglePostRequest } from '../request/Post';
 
 
 class ServerFacade {
@@ -25,6 +25,11 @@ class ServerFacade {
 		const queryParams = { city: post.city, state: post.state }
 
 		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath, queryParams);
+	}
+
+	static async getSinglePost<T>(post: SinglePostRequest): Promise<AxiosResponse<T>> {
+		const urlPath = `${this.post}/single/${post.id}`;
+		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath);
 	}
 
     //GET
