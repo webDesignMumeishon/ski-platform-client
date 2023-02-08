@@ -1,8 +1,14 @@
+import {IPost} from '../interfaces/post'
 
-function DiscussionTitle() {
+interface componentProps {
+  post: IPost
+}
+
+function DiscussionTitle( {post} : componentProps) {
+
     return (
       <div className="discussion-title-container">
-          <h1>Husky pre-commit fails with code 1 (error)</h1>
+          <h1>{post.title}</h1>
       </div>
     );
   }

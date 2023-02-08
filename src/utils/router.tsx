@@ -1,12 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 
 import App from '../App'
-import Discussion from '../components/Discussion'
 import ErrorPage from '../components/ErrorPage'
 import Home from '../components/Home'
 import Login from '../components/Login'
 import Posts, { loader as postsLoader } from '../components/Posts'
 import Resorts, { loader as resortLoader } from '../components/Resorts'
+import Discussion, { loader as singlePostLoader } from '../components/Discussion'
 import Report from '../components/Report'
 import Market from '../components/Market'
 import Restaurants from '../components/Restaurants'
@@ -42,6 +42,7 @@ export default createBrowserRouter([
           },
           {
             path: '/:state/:center/post/:postId',
+            loader: singlePostLoader,
             element: <Discussion />
           },
           {
