@@ -1,5 +1,5 @@
 import { IComment } from '../interfaces/comments'
-// ok
+
 interface componentProps {
   comment: IComment
   index: number
