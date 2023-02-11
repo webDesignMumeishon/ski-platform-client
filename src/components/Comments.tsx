@@ -9,7 +9,7 @@ type CommentsStateProps = [] | IComment[]
 
 const Comments = () => {
 
-    let { postId} = useParams();
+    const { postId} = useParams();
     const [comments, setComments] = useState<CommentsStateProps>([])
     const [parentComments, setParentComments] = useState<CommentsStateProps>([])
 
@@ -32,7 +32,9 @@ const Comments = () => {
         fetchData()
     }, [])
 
-    if(comments !== null){
+    console.log(comments)
+
+    if(comments !== null && comments.length > 0){
         return (
             <div className="comments-container">
                 {parentComments.map((comment: IComment, index : number) => {
