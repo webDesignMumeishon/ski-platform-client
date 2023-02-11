@@ -1,4 +1,6 @@
 import { IComment } from '../interfaces/comments'
+import {getFullDate} from '../utils/getDate'
+
 
 interface componentProps {
   comment: IComment
@@ -36,7 +38,7 @@ const Comment = ({ comment, replies, index }: componentProps): JSX.Element => {
       <div className="comment-content">
         <div className="comment-header">
           <p>
-            <span>{comment.first_name}</span> commented on {comment.created_at}
+            <span>{comment.first_name}</span> commented on {getFullDate(new Date(comment.created_at))}
           </p>
         </div>
 
