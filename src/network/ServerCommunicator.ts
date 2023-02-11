@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 class ServerCommunicator {
 	static baseURL = 'http://localhost:4000';
 	
-	static async doGetRequest<T, RequestBody = {}>(extension: string, queryParams? : RequestBody): Promise<AxiosResponse<T>> {
+	static async doGetRequest<T, RequestBody = object>(extension: string, queryParams? : RequestBody): Promise<AxiosResponse<T>> {
 
         const requestURL = `${this.baseURL}/${extension}`
         
