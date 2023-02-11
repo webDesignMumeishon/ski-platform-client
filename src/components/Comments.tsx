@@ -8,6 +8,7 @@ import PostService from "../service/PostService";
 type CommentsStateProps = [] | IComment[]
 
 const Comments = () => {
+    let nousevar;
 
     const { postId} = useParams();
     const [comments, setComments] = useState<CommentsStateProps>([])
@@ -31,8 +32,6 @@ const Comments = () => {
         }
         fetchData()
     }, [])
-
-    console.log(comments)
 
     if(comments !== null && comments.length > 0){
         return (
