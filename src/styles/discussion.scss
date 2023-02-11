@@ -10,6 +10,14 @@
 .discussion-title-container{
     position: relative;
     margin-bottom: 2%;
+    padding-bottom: 8px;
+
+    p{
+        color: #57606a;
+        font-size: 14px;
+        margin-bottom: 10px;
+
+    }
 }
 
 .discussion-title-container::after {

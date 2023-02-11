@@ -6,10 +6,6 @@ interface componentProps {
 }
 
 function DiscussionTitle( {post} : componentProps) {
-
-
-
-
     return (
       <div className="discussion-title-container">
           <h1>{post.title}</h1>
