@@ -1,6 +1,5 @@
 import ServerFacade from "../network/ServerFacade";
 import Login from '../request/Login';
-import { IUserLogged } from '../interfaces/user';
 import { User } from '../response/User';
 
 class UserService {
@@ -9,7 +8,7 @@ class UserService {
 
         const login = new Login(email, password)
 		
-        return await ServerFacade.userLogin<IUserLogged>(login)
+        return await ServerFacade.userLogin(login)
 	}
 }
 
