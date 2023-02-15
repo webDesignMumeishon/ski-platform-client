@@ -17,7 +17,7 @@ import Message from "../eums/Message";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
-function Copyright(props: any) {
+function Copyright(props: {sx: object}) {
   return (
     <Typography
       variant="body2"
