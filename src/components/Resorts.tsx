@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
-
+import { IResort } from "../interfaces/resort";
 import Resort from "./Resort";
 
-export async function loader(): Promise<any> {
+export async function loader(): Promise<IResort> {
   const result = await axios.get("http://localhost:4000/resort/resorts", {
     withCredentials: true,
     headers: {
@@ -15,15 +15,14 @@ export async function loader(): Promise<any> {
 }
 
 const Resorts = () => {
-  const list = useLoaderData() as any;
-
+  const list = useLoaderData() as unknown as IResort[];
   return (
     <Box style={{padding: '20px'}}>
         <Grid container >
         {
-            list.map((resort: any, index: any) => {
+            list.map((resort: IResort) => {
                 return (
-                <Resort key={index} resort={resort}/>
+                <Resort key={resort.id} resort={resort}/>
                 );
             })
         }
