@@ -88,7 +88,7 @@ class ServerFacade {
 
 		}
 		catch(error){
-			console.error(error)
+			// console.error(error)
 			return new LikeResponse(
 				500,
 				false,
