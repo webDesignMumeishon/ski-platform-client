@@ -18,7 +18,7 @@ class ServerCommunicator {
         )
 	}
 
-    static async doPostRequest<RequestType, ResponseType>(extension : string, body : RequestType) : Promise<AxiosResponse<ResponseType, any>> {
+    static async doPostRequest<RequestType, ResponseType>(extension : string, body : RequestType) : Promise<AxiosResponse<ResponseType>> {
 
         const requestURL = `${this.baseURL}/${extension}` 
 
