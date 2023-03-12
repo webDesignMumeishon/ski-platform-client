@@ -1,13 +1,11 @@
-
+import { Box } from "@mui/system"
+import ResortReport from './ResortReport'
 
 const Report = () => {
     return (
-        <div>
-            <h1>Report</h1>
-
-            <p>sdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadnsdasdnsaidnsandsadnassadasdnasndnksadn</p>
-
-        </div>
+        <Box>
+            <ResortReport area={{title: 'Area Open', value: '88%'}} trails={{title: 'Trails Open', value: '67 of 76'}}/>
+        </Box>
     )
 }
 
