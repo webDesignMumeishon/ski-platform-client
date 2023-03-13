@@ -21,6 +21,12 @@ const THEME = createTheme({
    "fontWeightLight": 300,
    "fontWeightRegular": 400,
    "fontWeightMedium": 500,
+  },
+  palette: {
+    background: {
+      default: '#f6f6f6', // set default background color
+      paper: '#FFFFFF', // set paper/background color for paper components
+    },
   }
 });
 
