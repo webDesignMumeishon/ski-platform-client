@@ -8,17 +8,13 @@ class LikeService {
 
         // GET
         static async likePost(postId : number) : Promise<LikeResponse> {
-
-        const request = new LikeRequest(postId)
-
+                const request = new LikeRequest(postId)
                 return await ServerFacade.likePost(request);
         }
 
         //DELETE
         static async unlikePost(postId : number): Promise<AxiosResponse<string>> {
-
                 return await ServerFacade.unlikePost<string>(postId);
-
         }
 
  
