@@ -8,6 +8,8 @@ interface Description {
 interface ResortReportProps{
     trails: Description
     area: Description
+    lift: Description
+    condition: Description
 }
 
 type ResortReportPropsKeys = keyof ResortReportProps;
