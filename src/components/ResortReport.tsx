@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material"
+import { Box } from "@mui/system"
 
 interface Description {
     title: string
@@ -21,27 +22,30 @@ const ResortReport = (props: ResortReportProps) => {
     return (
         <div>
             <h2>Resort Report</h2>
-        
-            <Grid container md={12} flexWrap='nowrap'>
-            {reportElements.map((key : ResortReportPropsKeys, index: number) => {
-                return (
-                    <Grid 
-                        container 
-                        flexDirection={'column'} 
-                        className='resort-report-child-status'
-                        alignItems={'center'}
-                        key={index}
-                    >
-                        <Grid item>
-                            <span>{props[key].title}</span>
+
+            <Box className='report-wrapper'>
+                <Grid container md={12} flexWrap='nowrap' style={{padding: '20px'}}>
+                {reportElements.map((key : ResortReportPropsKeys, index: number) => {
+                    return (
+                        <Grid 
+                            container 
+                            flexDirection={'column'} 
+                            className='resort-report-child-status'
+                            alignItems={'center'}
+                            key={index}
+                        >
+                            <Grid item>
+                                <span>{props[key].title}</span>
+                            </Grid>
+                            <Grid item>
+                                <span>{props[key].value}</span>
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <span>{props[key].value}</span>
-                        </Grid>
-                    </Grid>
-                )
-            })}
-            </Grid>
+                    )
+                })}
+                </Grid>
+            </Box>
+          
         </div>
     )
 }
