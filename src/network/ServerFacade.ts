@@ -10,12 +10,15 @@ import { ILikeRequest } from '../interfaces/like';
 import { User } from '../response/User';
 import Message from '../eums/Message';
 import { PostListRequest, SinglePostRequest } from '../request/Post';
+// Resort
+import { ResortReportRequest } from '../request/Resort';
 
 
 class ServerFacade {
     static post = 'post'
     static user = 'user'
     static like = 'like'
+    static resort = 'resort'
 
 	// GET
 	static async getPostsList<T>(post: PostListRequest): Promise<AxiosResponse<T>> {
@@ -103,6 +106,15 @@ class ServerFacade {
 		const urlPath = `${this.like}/${param}`;
 
 		return await ServerCommunicator.doDeleteRequest<T>(urlPath);
+	}
+
+	static async getResortReport<T>(params : ResortReportRequest) : Promise<AxiosResponse<T>> {
+
+		const urlPath = `${this.resort}/report`;
+
+		const queryParams = {state: params.state, town: params.town}
+
+		return await ServerCommunicator.doGetRequest<T>(urlPath, queryParams);
 	}
 
 
