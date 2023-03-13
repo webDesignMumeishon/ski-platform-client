@@ -16,9 +16,6 @@ const Report = () => {
         snowConditions: ''
     })
 
-
-
-
     useEffect(() => {
         const fetchData = async () : Promise<void> => {
             if(state !== undefined && center !== undefined){

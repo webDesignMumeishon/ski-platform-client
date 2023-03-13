@@ -22,7 +22,7 @@ const ResortReport = (props: ResortReportProps) => {
         <div>
             <h2>Resort Report</h2>
         
-            <Grid container md={12} style={{border: 'red solid 2px'}} flexWrap='nowrap'>
+            <Grid container md={12} flexWrap='nowrap'>
             {reportElements.map((key : ResortReportPropsKeys, index: number) => {
                 return (
                     <Grid 
