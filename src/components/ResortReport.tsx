@@ -35,7 +35,7 @@ const ResortReport = (props: ResortReportProps) => {
                             key={index}
                         >
                             <Grid item>
-                                <span>{props[key].title}</span>
+                                <span className="report-title">{props[key].title}</span>
                             </Grid>
                             <Grid item>
                                 <span>{props[key].value}</span>
