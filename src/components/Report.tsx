@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import ResortReport from './ResortReport'
 import ResortService from "../service/ResortService"
 import {IResortReport} from '../interfaces/resort'
+import ResortInfo from './ResortInfo'
 
 const Report = () => {
     const { state, center } = useParams();
@@ -34,6 +35,7 @@ const Report = () => {
                 lift={{title: 'Lifts Open', value: report.openLifts}}
                 condition={{title: 'Conditions', value: report.snowConditions}}
             />
+            <ResortInfo/>
         </Box>
     )
 }
