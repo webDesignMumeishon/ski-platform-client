@@ -22,7 +22,6 @@ const ResortReport = (props: ResortReportProps) => {
     return (
         <div>
             <h2>Resort Report</h2>
-
             <Box className='report-wrapper'>
                 <Grid container md={12} flexWrap='nowrap' style={{padding: '20px'}}>
                 {reportElements.map((key : ResortReportPropsKeys, index: number) => {
@@ -45,7 +44,6 @@ const ResortReport = (props: ResortReportProps) => {
                 })}
                 </Grid>
             </Box>
-          
         </div>
     )
 }
