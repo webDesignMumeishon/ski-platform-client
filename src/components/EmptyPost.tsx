@@ -1,4 +1,5 @@
-import { Grid, Link, Box} from "@mui/material";
+import { Grid,  Box} from "@mui/material";
+import { Link } from "react-router-dom";
 
 const EmptyPost = () => {
     return (
@@ -10,11 +11,10 @@ const EmptyPost = () => {
                     </Grid>
 
                     <Grid item>
-                        <Link href={'blank'}>Create Your Post</Link>
+                        <Link to={'new/create'}>Create Your Post</Link>
                     </Grid>
                 </Grid>
             </Box>
- 
         </div>
     )
 }

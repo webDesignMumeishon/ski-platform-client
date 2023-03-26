@@ -10,6 +10,7 @@ import Discussion, { loader as singlePostLoader } from '../components/Discussion
 import Report from '../components/Report'
 import Market from '../components/Market'
 import Restaurants from '../components/Restaurants'
+import CreatePost from '../components/CreatePost'
 
 export default createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export default createBrowserRouter([
             path: '/:state/:center/post/:postId',
             loader: singlePostLoader,
             element: <Discussion />
+          },
+          {
+            path: '/:state/:center/post/new/create',
+            element: <CreatePost/>
           },
           {
             path: '/:state/:center/market',
