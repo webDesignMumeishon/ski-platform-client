@@ -5,6 +5,7 @@ import {
 
 import {IPost} from '../interfaces/post'
 import SinglePost from "./SinglePost";
+import EmptyPost from "./EmptyPost";
 import PostService from "../service/PostService";
 
 export async function loader(context: LoaderFunctionArgs) : Promise<IPost[]> {
@@ -21,6 +22,10 @@ function Posts() {
     const postMappedList = list.map((post : IPost) => {
         return <SinglePost key={post.id} post={post}/>
     })
+
+    if(list.length === 0){
+        return <EmptyPost/>
+    }
 
     return (
         <div className="posts-container">
