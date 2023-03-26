@@ -25,7 +25,7 @@ class ServerFacade {
         
 		const urlPath = `${this.post}/list/posts`;
 
-		const queryParams = { city: post.city, state: post.state }
+		const queryParams = { town: post.town, state: post.state }
 
 		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath, queryParams);
 	}

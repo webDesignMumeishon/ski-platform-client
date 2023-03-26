@@ -1,16 +1,16 @@
 import {IPostListRequest, ISinglePostRequest} from '../interfaces/post'
 
 export class PostListRequest implements IPostListRequest{
-    private _city : string
+    private _town : string
     private _state: string
 
-    constructor(city : string, state: string){
-        this._city = city
+    constructor(town : string, state: string){
+        this._town = town
         this._state = state
     }
 
-    get city(){
-        return this._city
+    get town(){
+        return this._town
     }
 
     get state(){

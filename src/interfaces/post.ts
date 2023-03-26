@@ -11,7 +11,7 @@ export interface IPost {
 }
 
 export interface IPostListRequest{
-	city: string,
+	town: string,
 	state: string
 }
 
