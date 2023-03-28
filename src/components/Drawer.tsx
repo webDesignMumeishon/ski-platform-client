@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,7 +12,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import { useParams, Outlet, useNavigate } from "react-router-dom";
+import { useParams, Outlet, useNavigate, useLocation } from "react-router-dom";
 
 import { capitalizeFirstLetter } from "../utils/handleWords";
 import navbarItems from "./const/navbar";
@@ -25,6 +26,13 @@ interface Props {
 
 function ResponsiveDrawer(props: Props) {
   const { window } = props;
+  const location = useLocation();
+
+  useEffect(() => {
+    // update component based on new location
+    const listItem = location.pathname.split('/')[3]
+    setSeletected(listItem)
+  }, [location]);
 
   const { state, center } = useParams();
   const navigate = useNavigate();
@@ -36,12 +44,7 @@ function ResponsiveDrawer(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  // This is for when refresing the page it navigates to the /path in the state
-  React.useEffect(() => {
-    navigate(selected);
-  }, []);
-
+  
   const seletedDrawer = {
     "&.MuiButtonBase-root": {
       backgroundColor: "#F5F5F5",
