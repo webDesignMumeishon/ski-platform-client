@@ -14,7 +14,8 @@ const Report = () => {
         openLifts: '',
         openTerrain: '',
         openTrails: '',
-        snowConditions: ''
+        snowConditions: '',
+        status: true
     })
 
     useEffect(() => {
@@ -34,6 +35,7 @@ const Report = () => {
                 trails={{title: 'Trails Open', value: report.openTrails}}
                 lift={{title: 'Lifts Open', value: report.openLifts}}
                 condition={{title: 'Conditions', value: report.snowConditions}}
+                status={{title: 'Status', value: report.status}}
             />
             <ResortInfo/>
         </Box>

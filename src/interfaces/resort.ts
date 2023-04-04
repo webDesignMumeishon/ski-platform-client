@@ -9,4 +9,5 @@ export interface IResortReport {
     openTerrain: string
     openTrails: string
     snowConditions: string
+    status: boolean
 }
