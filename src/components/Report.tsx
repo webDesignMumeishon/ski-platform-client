@@ -18,18 +18,25 @@ const Report = () => {
         status: true
     })
 
+    const [loading, setLoading] = useState<boolean>(true)
+
     useEffect(() => {
         const fetchData = async () : Promise<void> => {
             if(state !== undefined && center !== undefined){
                 const response = await ResortService.getResortReport(state, center)
                 setReport(response.data)
+                setLoading(false)
             }
         }
         fetchData()
     }, [])
 
-    return (
-        <Box>
+    if(loading){
+        return (<div>loading</div>)
+    }
+    else{
+       return (
+       <Box>
             <ResortReport 
                 area={{title: 'Area Open', value: report.openTerrain}} 
                 trails={{title: 'Trails Open', value: report.openTrails}}
@@ -39,7 +46,8 @@ const Report = () => {
             />
             <ResortInfo/>
         </Box>
-    )
+        )
+    }
 }
 
 export default Report
