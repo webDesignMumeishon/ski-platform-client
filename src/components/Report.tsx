@@ -6,6 +6,7 @@ import ResortReport from './ResortReport'
 import ResortService from "../service/ResortService"
 import {IResortReport} from '../interfaces/resort'
 import ResortInfo from './ResortInfo'
+import Loader from "./Loader";
 
 const Report = () => {
     const { state, center } = useParams();
@@ -31,23 +32,20 @@ const Report = () => {
         fetchData()
     }, [])
 
-    if(loading){
-        return (<div>loading</div>)
-    }
-    else{
-       return (
-       <Box>
-            <ResortReport 
-                area={{title: 'Area Open', value: report.openTerrain}} 
-                trails={{title: 'Trails Open', value: report.openTrails}}
-                lift={{title: 'Lifts Open', value: report.openLifts}}
-                condition={{title: 'Conditions', value: report.snowConditions}}
-                status={{title: 'Status', value: report.status}}
-            />
-            <ResortInfo/>
-        </Box>
-        )
-    }
+    return (
+        <Loader isLoading={loading} >
+            <Box>
+                <ResortReport 
+                    area={{title: 'Area Open', value: report.openTerrain}} 
+                    trails={{title: 'Trails Open', value: report.openTrails}}
+                    lift={{title: 'Lifts Open', value: report.openLifts}}
+                    condition={{title: 'Conditions', value: report.snowConditions}}
+                    status={{title: 'Status', value: report.status}}
+                />
+                <ResortInfo/>
+            </Box>
+        </Loader>
+    )
 }
 
 export default Report
