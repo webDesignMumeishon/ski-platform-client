@@ -61,7 +61,7 @@ export default function Login() {
   };
 
   if (isLogged) {
-    return <Navigate to="/colorado/breck/post" replace={false} />;
+    return <Navigate to="/resorts" replace={false} />;
   }
 
   return (
