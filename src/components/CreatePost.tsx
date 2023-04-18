@@ -36,6 +36,17 @@ const CreatePost = () => {
                     </Grid>
 
                     <Grid item>
+                    <TextField
+                        id="outlined-number"
+                        label="Postcode"
+                        type="number"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        />
+                    </Grid>
+
+                    <Grid item>
                         <button>Comment</button>
                     </Grid>
                 </Grid>
