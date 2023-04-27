@@ -1,10 +1,9 @@
-
 interface ComponentProps{
     isLoading: boolean
-    children: any
+    children: JSX.Element
 }
 
-const Loader = (prop: ComponentProps) => {
+const Loader = (prop: ComponentProps) : JSX.Element => {
     if(prop.isLoading){
         return(
             <h1>LOADING</h1>

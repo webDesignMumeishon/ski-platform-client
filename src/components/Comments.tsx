@@ -8,7 +8,7 @@ import PostService from "../service/PostService";
 type CommentsStateProps = [] | IComment[]
 
 const Comments = () => {
-    const { postId} = useParams();
+    const {postId} = useParams();
     const [comments, setComments] = useState<CommentsStateProps>([])
     const [parentComments, setParentComments] = useState<CommentsStateProps>([])
 

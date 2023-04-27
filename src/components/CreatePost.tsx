@@ -1,24 +1,26 @@
 import { Grid, Box, TextField} from "@mui/material";
+// import { useParams } from 'react-router-dom';
 import { HiLocationMarker } from 'react-icons/hi';
 
+// type SkiCenter = {
+//     state: string
+//     center: string
+// }
 
 const CreatePost = () => {
+    // const params = useParams<SkiCenter>();
+    
     return (
         <div>
             <Box >
                 <h2>Create Post</h2>
                 <Grid container direction={'column'} sx={{width: '60%', margin: 'auto'}} spacing={2}>
-
-                    <Grid item>
-                        <TextField id="outlined-basic" label="Title" variant="outlined" />
-                    </Grid>
-               
                     <Grid item sx={{}}>
                         <TextField
                             sx={{width: "100%", margin: 'auto',display: 'flex'}}
                             id="outlined-multiline-static"
                             multiline
-                            label="Post"
+                            label="Ask something!"
                             rows={5}
                             placeholder="Create a great post today..."
                         />
@@ -34,7 +36,7 @@ const CreatePost = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-
+{/* 
                     <Grid item>
                     <TextField
                         id="outlined-number"
@@ -44,7 +46,7 @@ const CreatePost = () => {
                             shrink: true,
                         }}
                         />
-                    </Grid>
+                    </Grid> */}
 
                     <Grid item>
                         <button>Comment</button>
