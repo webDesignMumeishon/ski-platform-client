@@ -19,8 +19,7 @@ const initialState: IResortReport = {
 export const fetchResort = createAsyncThunk<AxiosResponse<IResortReport>, ResortRequest>(
     'resort/fetch',
     async (params) => {
-        const response = await ResortService.getResortReport(params.state, params.town)
-        return response
+      return await ResortService.getResortReport(params.state, params.town)
     }
 )
 

@@ -1,6 +1,9 @@
 import { Grid, Box, TextField} from "@mui/material";
 
+// import {useAppSelector} from '../redux/hooks'
+
 const CreatePost = () => {
+    // const resort = useAppSelector(((state) => state.resortReducer))
     return (
         <div>
             <Box >

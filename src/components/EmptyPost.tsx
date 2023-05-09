@@ -1,7 +1,10 @@
-import { Grid,  Box} from "@mui/material";
 import { Link } from "react-router-dom";
+import { Grid,  Box} from "@mui/material";
+
+
 
 const EmptyPost = () => {
+
     return (
         <div>
             <Box >
