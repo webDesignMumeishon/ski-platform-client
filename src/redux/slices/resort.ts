@@ -27,20 +27,7 @@ export const fetchResort = createAsyncThunk<AxiosResponse<IResortReport>, Resort
 export const resortSlice = createSlice({
   name: 'resort',
   initialState,
-  reducers: {
-    // getResort: (state, actions: PayloadAction<IResortReport>) => {
-    //     const {id} = actions.payload
-    //     if(state.id !== id){
-    //         return {
-    //             id: 1,
-    //             city: 'Brekcneridge',
-    //             state: 'CO'
-    //         }
-    //     }else{
-    //         return state
-    //     }
-    // }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
     .addCase(fetchResort.pending, (state) => {
