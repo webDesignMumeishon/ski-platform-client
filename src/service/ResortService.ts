@@ -1,15 +1,21 @@
 import { AxiosResponse } from 'axios';
 
-import {ResortReportRequest} from '../request/Resort'
+import {ResortRequest} from '../request/Resort'
 import ServerFacade from "../network/ServerFacade";
-import {IResortReport} from '../interfaces/resort'
+import {IResort, IResortReport} from '../interfaces/resort'
 
 class ResortService {
 
     // GET
     static async getResortReport(state : string, town: string) : Promise<AxiosResponse<IResortReport>> {
-            const request = new ResortReportRequest(state, town)
-            return await ServerFacade.getResortReport<IResortReport>(request);
+        const request = new ResortRequest(state, town)
+        return ServerFacade.getResortReport<IResortReport>(request);
+    }
+
+    // GET
+    static async getResort(state : string, town: string) : Promise<AxiosResponse<IResort>> {
+        const request = new ResortRequest(state, town)
+        return ServerFacade.getResort<IResort>(request);
     }
 }
 

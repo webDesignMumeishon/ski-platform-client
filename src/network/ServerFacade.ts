@@ -11,7 +11,7 @@ import { User } from '../response/User';
 import Message from '../eums/Message';
 import { PostListRequest, SinglePostRequest } from '../request/Post';
 // Resort
-import { ResortReportRequest } from '../request/Resort';
+import { ResortRequest } from '../request/Resort';
 
 
 class ServerFacade {
@@ -108,9 +108,18 @@ class ServerFacade {
 		return await ServerCommunicator.doDeleteRequest<T>(urlPath);
 	}
 
-	static async getResortReport<T>(params : ResortReportRequest) : Promise<AxiosResponse<T>> {
+	static async getResortReport<T>(params : ResortRequest) : Promise<AxiosResponse<T>> {
 
 		const urlPath = `${this.resort}/report`;
+
+		const queryParams = {state: params.state, town: params.town}
+
+		return await ServerCommunicator.doGetRequest<T>(urlPath, queryParams);
+	}
+
+	static async getResort<T>(params : ResortRequest) : Promise<AxiosResponse<T>> {
+
+		const urlPath = `${this.resort}/one`;
 
 		const queryParams = {state: params.state, town: params.town}
 

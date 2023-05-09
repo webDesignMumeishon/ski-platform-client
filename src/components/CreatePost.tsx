@@ -1,15 +1,7 @@
 import { Grid, Box, TextField} from "@mui/material";
-// import { useParams } from 'react-router-dom';
 import { HiLocationMarker } from 'react-icons/hi';
 
-// type SkiCenter = {
-//     state: string
-//     center: string
-// }
-
 const CreatePost = () => {
-    // const params = useParams<SkiCenter>();
-    
     return (
         <div>
             <Box >

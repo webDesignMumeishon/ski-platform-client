@@ -8,6 +8,7 @@ import SinglePost from "./SinglePost";
 import EmptyPost from "./EmptyPost";
 import PostService from "../service/PostService";
 
+
 export async function loader(context: LoaderFunctionArgs) : Promise<IPost[]> {
     if(typeof context.params.center === 'string' && typeof context.params.state === 'string'){
         const list = await PostService.getListPosts(context.params.center, context.params.state)

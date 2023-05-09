@@ -7,6 +7,8 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 import './index.scss';
 import createBrowserRouter from './utils/router'
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 // import reportWebVitals from './reportWebVitals';
 
 
@@ -32,9 +34,11 @@ const THEME = createTheme({
 
 root.render(
   <ThemeProvider theme={THEME}>
-    <React.StrictMode>
-      <RouterProvider router={createBrowserRouter}/>
-    </React.StrictMode>
+    <Provider store={store}>
+      <React.StrictMode>
+        <RouterProvider router={createBrowserRouter}/>
+      </React.StrictMode>
+    </Provider>
   </ThemeProvider>
 );
 

@@ -1,5 +1,7 @@
 
-export class ResortReportRequest{
+import {TResortRequest} from '../interfaces/resort'
+
+export class ResortRequest implements TResortRequest{
     private _state : string
     private _town : string
 

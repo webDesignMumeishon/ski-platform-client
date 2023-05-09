@@ -12,8 +12,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import { useParams, Outlet, useNavigate, useLocation } from "react-router-dom";
-
+import {Outlet, useNavigate, useLocation } from "react-router-dom";
+import {useAppSelector} from '../redux/hooks'
 import { capitalizeFirstLetter } from "../utils/handleWords";
 import navbarItems from "./const/navbar";
 import userItems from "./const/user";
@@ -28,18 +28,18 @@ function ResponsiveDrawer(props: Props) {
   const { window } = props;
   const location = useLocation();
 
+  const resort = useAppSelector(((state) => state.resortReducer))
+
   useEffect(() => {
     // update component based on new location
     const listItem = location.pathname.split('/')[3]
     setSeletected(listItem)
   }, [location]);
 
-  const { state, center } = useParams();
   const navigate = useNavigate();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [selected, setSeletected] = React.useState("report");
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -56,7 +56,7 @@ function ResponsiveDrawer(props: Props) {
     <div>
       <Toolbar />
       <p color="#243648" style={{ color: "#f7f7f88c", padding: "10px" }}>
-        {capitalizeFirstLetter(center)}, {capitalizeFirstLetter(state)}
+        {capitalizeFirstLetter(resort.city)}, {capitalizeFirstLetter(resort.state)}
       </p>
       <Divider sx={{ backgroundColor: "#f7f7f88c" }} />
       <List>

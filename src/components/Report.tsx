@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react"
 import { Box } from "@mui/system"
-import { useParams } from "react-router-dom";
 
 import ResortReport from './ResortReport'
-import ResortService from "../service/ResortService"
 import {IResortReport} from '../interfaces/resort'
 import ResortInfo from './ResortInfo'
 import Loader from "./Loader";
+import {useAppSelector} from '../redux/hooks'
 
 const Report = () => {
-    const { state, center } = useParams();
+    const resort = useAppSelector(((state) => state.resortReducer))
+    const [loading, setLoading] = useState<boolean>(true)
 
     const [report, setReport] = useState<IResortReport>({
+        id: 0,
+        city: '',
+        state: '',
         openLifts: '',
         openTerrain: '',
         openTrails: '',
@@ -19,18 +22,10 @@ const Report = () => {
         status: true
     })
 
-    const [loading, setLoading] = useState<boolean>(true)
-
     useEffect(() => {
-        const fetchData = async () : Promise<void> => {
-            if(state !== undefined && center !== undefined){
-                const response = await ResortService.getResortReport(state, center)
-                setReport(response.data)
-                setLoading(false)
-            }
-        }
-        fetchData()
-    }, [])
+        setReport(resort)
+        setLoading(false)
+    }, [resort])
 
     return (
         <Loader isLoading={loading} >

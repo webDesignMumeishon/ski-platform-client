@@ -29,33 +29,33 @@ export default createBrowserRouter([
         loader: resortLoader
       },
       {
-        path: ':state/:center',
+        path: ':state/:town',
         element: <Home />,
         children: [
           {
-            path: '/:state/:center/report',
+            path: '/:state/:town/report',
             element: <Report />
           },
           {
-            path: '/:state/:center/post',
+            path: '/:state/:town/post',
             loader: postsLoader,
             element: <Posts />
           },
           {
-            path: '/:state/:center/post/:postId',
+            path: '/:state/:town/post/:postId',
             loader: singlePostLoader,
             element: <Discussion />
           },
           {
-            path: '/:state/:center/post/new/create',
+            path: '/:state/:town/post/new/create',
             element: <CreatePost/>
           },
           {
-            path: '/:state/:center/market',
+            path: '/:state/:town/market',
             element: <Market />
           },
           {
-            path: '/:state/:center/restaurants',
+            path: '/:state/:town/restaurants',
             element: <Restaurants />
           }
         ]
