@@ -50,7 +50,7 @@ const Comments = () => {
         fetchData()
     }, [])
 
-    if(comments !== null && comments.length > 0){
+    if(parentComments !== null && parentComments.length > 0){
         return (
             <CommentsWrapper setParentComments={setParentComments} postId={postId} hasComment={true}>
                 <>
