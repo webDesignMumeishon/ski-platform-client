@@ -4,8 +4,9 @@ import { useParams } from 'react-router-dom';
 import Comment from "./Comment"
 import { IComment } from "../interfaces/comments"
 import PostService from "../service/PostService";
+import CreateComment from './CreateComment'
 
-type CommentsStateProps = [] | IComment[]
+export type CommentsStateProps = [] | IComment[]
 
 const Comments = () => {
     const {postId} = useParams();
@@ -44,6 +45,7 @@ const Comments = () => {
                         />
                     )
                 })}
+            {postId !== undefined ? <CreateComment postId={postId} setParentComments={setParentComments}/> : null}
             </div>
         ) 
     }
