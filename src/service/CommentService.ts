@@ -4,8 +4,8 @@ import { IComment } from "../interfaces/comments"
 
 class CommentService {
 	// GET
-	static async createNewComment(post_id: string, text: string): Promise<AxiosResponse<any>> {
-        const bodyRequest = {post_id, text}
+	static async createNewComment(postId: string, text: string): Promise<AxiosResponse<any>> {
+        const bodyRequest = {postId, text}
         return await CommentFacade.createNewComment<IComment>(bodyRequest);
 	}
 }
