@@ -40,12 +40,12 @@ const CreateComment = (props: Props) => {
         <div>
             <Grid item sx={{}}>
                 <TextField
-                    sx={{width: "100%", margin: 'auto',display: 'flex'}}
+                    sx={{width: "100%", margin: 'auto',display: 'flex', background: '#FFF', marginTop: '1%'}}
                     id="outlined-multiline-static"
                     multiline
-                    label="Ask something!"
+                    label="Add comment!"
                     rows={5}
-                    placeholder="Create a great post today..."
+                    placeholder="Say something nice..."
                     value={comment}
                     onChange={handleComment}
                 />
