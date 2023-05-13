@@ -4,7 +4,7 @@ import ServerFacade from "../network/ServerFacade";
 import { IComment } from '../interfaces/comments';
 import { IPost } from '../interfaces/post';
 import { PostListRequest, SinglePostRequest } from '../request/Post';
-
+import PostFacade from '../network/PostFacade';
 
 class PostService {
 
@@ -14,7 +14,8 @@ class PostService {
         return await ServerFacade.getPostsList<IPost[]>(bodyRequest);
 	}
 
-	static async getSinglePost(id: string,): Promise<AxiosResponse<IPost>> {
+	// GET
+	static async getSinglePost(id: string): Promise<AxiosResponse<IPost>> {
 		const paramRequest = new SinglePostRequest(id)
         return await ServerFacade.getSinglePost<IPost>(paramRequest);
 	}
@@ -22,6 +23,12 @@ class PostService {
 	// GET
     static async getComments(postId: string): Promise<AxiosResponse<IComment[]>> {
         return await ServerFacade.getComments<IComment[]>(postId);
+	}
+
+	// POST
+	static async createNewPost(cityId: number, title: string): Promise<AxiosResponse<IPost>> {
+		const bodyRequest = {cityId: cityId, title}
+		return await PostFacade.createNewPost<any>(bodyRequest);
 	}
 }
 

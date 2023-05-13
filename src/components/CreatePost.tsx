@@ -1,9 +1,28 @@
 import { Grid, Box, TextField} from "@mui/material";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-// import {useAppSelector} from '../redux/hooks'
+import { TResortRequest } from '../interfaces/resort'
+import {useAppSelector} from '../redux/hooks'
+import PostService from "../service/PostService";
 
 const CreatePost = () => {
-    // const resort = useAppSelector(((state) => state.resortReducer))
+    const resort = useAppSelector(((state) => state.resortReducer))
+    const [post, setPost] = useState<string>('')
+    const navigate = useNavigate();
+    const params = useParams<TResortRequest>();
+
+    const handleComment = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value
+        setPost(value)
+    }
+
+    const submitComment = async () => {
+        await PostService.createNewPost(resort.id, post)
+        setPost('')
+        navigate(`/${params.state}/${params.town}/post`);
+    }
+
     return (
         <div>
             <Box >
@@ -17,12 +36,14 @@ const CreatePost = () => {
                             label="Ask something!"
                             rows={5}
                             placeholder="Create a great post today..."
+                            value={post}
+                            onChange={handleComment}
                         />
                     </Grid>
                     <Grid item>
                     </Grid>
                     <Grid item>
-                        <button>Comment</button>
+                        <button onClick={submitComment}>Create Post</button>
                     </Grid>
                 </Grid>
             </Box>
