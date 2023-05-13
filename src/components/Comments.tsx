@@ -18,7 +18,6 @@ interface ComponentProps{
 const CommentsWrapper = (props: ComponentProps) => {
     const withPseudoElement = 'comments-container'
     const withoutPseudoElement = 'comments-container-no-pseudo'
-
     return (
         <div className={props.hasComment ? withPseudoElement : withoutPseudoElement}>
             {props.children}
@@ -49,7 +48,7 @@ const Comments = () => {
             }
         }
         fetchData()
-    }, [comments])
+    }, [])
 
     if(comments !== null && comments.length > 0){
         return (
