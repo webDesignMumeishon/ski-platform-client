@@ -61,6 +61,7 @@ const Comments = () => {
                             index={index}  
                             comment={comment} 
                             replies={getCommentReplies(comment.id)}
+                            setComments={setComments}
                         />
                     )
                 })}

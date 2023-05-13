@@ -1,11 +1,17 @@
+import { useState } from 'react'
+import { useParams } from 'react-router-dom';
+
 import { IComment } from '../interfaces/comments'
 import {getFullDate} from '../utils/getDate'
+import CommentService from '../service/CommentService'
+import { CommentsStateProps } from './Comments';
 
 
 interface componentProps {
   comment: IComment
   index: number
   replies: IComment[] | []
+  setComments: React.Dispatch<React.SetStateAction<CommentsStateProps>>
 }
 
 interface Reply {
@@ -29,9 +35,70 @@ const Replies = ({ reply }: Reply) => {
   )
 }
 
-const Comment = ({ comment, replies, index }: componentProps): JSX.Element => {
+interface ReplyProps {
+  parentId: number
+  handleShowReply: () => void
+  setComments: React.Dispatch<React.SetStateAction<CommentsStateProps>>
+}
 
+const CreateCommentReply = (props: ReplyProps) => {
+
+  const [comment, setComment] = useState('');
+  const {postId} = useParams();
+
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setComment(event.target.value);
+  };
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    if(postId !== undefined){
+      const newReply = await CommentService.createNewReply(postId, comment, props.parentId)
+      props.setComments((state: IComment[]) => {
+        return [
+          ...state,
+          newReply.data
+        ]
+      })
+      props.handleShowReply()
+    }
+    setComment('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit} action="" style={{padding: '1em'}}>
+      <button>x</button>
+      <div className='comment-reply'>
+        <input className='comment-reply-input'  placeholder={'Write a comment'} value={comment} onChange={handleChange}/>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  )
+}
+
+
+const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.Element => {
+
+  const [showReply, setShowReply] = useState<boolean>(false)
+  const handleShowReply = () => {
+    setShowReply(!showReply)
+  }
   const isFirstComment = index === 0
+
+
+  function compareFn(a: IComment, b: IComment) {
+    if (a.id < b.id) {
+      return -1;
+    }
+    if (a.id > b.id) {
+      return 1;
+    }
+    return 0;
+  } 
+
+  replies.sort(compareFn)
+
 
   return (
     <div className="comment-container" style={{paddingTop: isFirstComment ? '0px' : ''}}>
@@ -42,15 +109,29 @@ const Comment = ({ comment, replies, index }: componentProps): JSX.Element => {
           </p>
         </div>
 
-        <div className="comment-main">{comment.text}</div>
+        <div className="comment-main">
+          <p>{comment.text}</p>
+        </div>
+
 
         {replies.length > 0 &&
           replies.map((reply) => {
             return <Replies key={reply.id} reply={reply} />
-          })}
+          })
+        }
+
+        {
+          showReply
+          ?
+          <CreateCommentReply parentId={comment.id} handleShowReply={handleShowReply} setComments={setComments}/>
+          :
+          <button onClick={handleShowReply}>Reply</button>
+        }
       </div>
     </div>
   )
 }
+
+
 
 export default Comment
