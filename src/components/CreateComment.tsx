@@ -34,6 +34,7 @@ const CreateComment = (props: Props) => {
                 newComment
             ]
         })
+        setComment('')
     }
 
     return (
