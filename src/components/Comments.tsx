@@ -8,6 +8,25 @@ import CreateComment from './CreateComment'
 
 export type CommentsStateProps = [] | IComment[]
 
+interface ComponentProps{
+    setParentComments: any
+    children: JSX.Element
+    postId: string | undefined
+    hasComment: boolean
+}
+
+const CommentsWrapper = (props: ComponentProps) => {
+    const withPseudoElement = 'comments-container'
+    const withoutPseudoElement = 'comments-container-no-pseudo'
+
+    return (
+        <div className={props.hasComment ? withPseudoElement : withoutPseudoElement}>
+            {props.children}
+            {props.postId !== undefined ? <CreateComment postId={props.postId} setParentComments={props.setParentComments}/> : null}
+        </div>
+    )
+}
+
 const Comments = () => {
     const {postId} = useParams();
     const [comments, setComments] = useState<CommentsStateProps>([])
@@ -30,11 +49,12 @@ const Comments = () => {
             }
         }
         fetchData()
-    }, [])
+    }, [comments])
 
     if(comments !== null && comments.length > 0){
         return (
-            <div className="comments-container">
+            <CommentsWrapper setParentComments={setParentComments} postId={postId} hasComment={true}>
+                <>
                 {parentComments.map((comment: IComment, index : number) => {
                     return (
                         <Comment 
@@ -45,15 +65,15 @@ const Comments = () => {
                         />
                     )
                 })}
-            {postId !== undefined ? <CreateComment postId={postId} setParentComments={setParentComments}/> : null}
-            </div>
+                </>
+            </CommentsWrapper>
         ) 
     }
 
     return (
-        <div>
-            <h1>No Comments</h1>
-        </div>
+        <CommentsWrapper setParentComments={setParentComments} postId={postId} hasComment={false}>
+            <h1>No comments yet. Be the first to leave a comment!</h1>
+        </CommentsWrapper>
     )
 }
 
