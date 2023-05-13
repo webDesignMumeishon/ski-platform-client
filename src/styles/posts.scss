@@ -1,4 +1,9 @@
 .posts-container{
     width: 90%;
     margin: auto;
+
+    .posts-create{
+        display: block;
+        text-align: end;
+    }
 }

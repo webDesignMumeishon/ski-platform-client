@@ -1,6 +1,7 @@
 import {
     useLoaderData,
-    LoaderFunctionArgs
+    LoaderFunctionArgs,
+    Link
 } from "react-router-dom";
 
 import {IPost} from '../interfaces/post'
@@ -30,6 +31,7 @@ function Posts() {
 
     return (
         <div className="posts-container">
+            <Link className="posts-create" to={'new/create'}>Create post</Link>
             {postMappedList}
         </div>
     );
