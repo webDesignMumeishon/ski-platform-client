@@ -38,28 +38,27 @@
         .comment-reply-wrapper{
             position: relative;
             padding: 1.2em;
-        }
 
-        .comment-reply-cancel{
-            position: absolute;
-            top: 0;
-            right: 0px;
-            color: red
-        }
+            .comment-reply-cancel{
+                position: absolute;
+                top: 0;
+                right: 0px;
+                color: red
+            }
 
-        .comment-reply{
-
-            background: #f0f2f5;
-            border-radius: 10px;
-            width: 100%;
-            padding: .5em;
-            display: flex;
-            justify-content: space-between;
-
-            .comment-reply-input{
-                border: none;
-                outline: none;
-                background: inherit;
+            .comment-reply{
+                background: #f0f2f5;
+                border-radius: 10px;
+                width: 100%;
+                padding: .5em;
+                display: flex;
+                justify-content: space-between;
+    
+                .comment-reply-input{
+                    border: none;
+                    outline: none;
+                    background: inherit;
+                }
             }
         }
     }

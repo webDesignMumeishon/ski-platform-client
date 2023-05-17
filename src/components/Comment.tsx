@@ -1,12 +1,9 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { ImReply, ImCancelCircle } from 'react-icons/im';
-import { Box, IconButton } from '@mui/material';
 
 import { IComment } from '../interfaces/comments'
 import {getFullDate} from '../utils/getDate'
-import CommentService from '../service/CommentService'
 import { CommentsStateProps } from './Comments';
+import CreateCommentReply from './CreateCommentReply';
 
 interface componentProps {
   comment: IComment
@@ -35,53 +32,6 @@ const Replies = ({ reply }: Reply) => {
     </div>
   )
 }
-
-interface ReplyProps {
-  parentId: number
-  handleShowReply: () => void
-  setComments: React.Dispatch<React.SetStateAction<CommentsStateProps>>
-}
-
-const CreateCommentReply = (props: ReplyProps) => {
-
-  const [comment, setComment] = useState('');
-  const {postId} = useParams();
-
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setComment(event.target.value);
-  };
-
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
-    if(postId !== undefined){
-      const newReply = await CommentService.createNewReply(postId, comment, props.parentId)
-      props.setComments((state: IComment[]) => {
-        return [
-          ...state,
-          newReply.data
-        ]
-      })
-      props.handleShowReply()
-    }
-    setComment('');
-  };
-
-  return (
-    <form onSubmit={handleSubmit} action="" className='comment-reply-wrapper'>
-      <IconButton className='comment-reply-cancel' style={{padding: "0"}} onClick={props.handleShowReply}>
-          <ImCancelCircle />
-      </IconButton>
-      <Box className='comment-reply'>
-        <input className='comment-reply-input'  placeholder={'Write a comment'} value={comment} onChange={handleChange}/>
-        <IconButton aria-label="Reply">
-          <ImReply />
-        </IconButton>
-      </Box>
-    </form>
-  )
-}
-
 
 const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.Element => {
 
