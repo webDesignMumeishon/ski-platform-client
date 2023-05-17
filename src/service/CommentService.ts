@@ -3,12 +3,13 @@ import CommentFacade from '../network/CommentFacade'
 import { IComment } from "../interfaces/comments"
 
 class CommentService {
-	// GET
+	// POST
 	static async createNewComment(postId: string, text: string): Promise<AxiosResponse<any>> {
         const bodyRequest = {postId, text}
         return await CommentFacade.createNewComment<IComment>(bodyRequest);
 	}
 
+	// POST
 	static async createNewReply(postId: string, text: string, parent: number): Promise<AxiosResponse<any>> {
         const bodyRequest = {postId, text, parent}
         return await CommentFacade.createNewReply<IComment>(bodyRequest);

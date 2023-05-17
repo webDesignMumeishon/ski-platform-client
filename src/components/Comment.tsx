@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { ImReply } from 'react-icons/im';
+import { IconButton } from '@mui/material';
 
 import { IComment } from '../interfaces/comments'
 import {getFullDate} from '../utils/getDate'
 import CommentService from '../service/CommentService'
 import { CommentsStateProps } from './Comments';
-
 
 interface componentProps {
   comment: IComment
@@ -71,7 +72,9 @@ const CreateCommentReply = (props: ReplyProps) => {
       <button>x</button>
       <div className='comment-reply'>
         <input className='comment-reply-input'  placeholder={'Write a comment'} value={comment} onChange={handleChange}/>
-        <button type="submit">Submit</button>
+        <IconButton aria-label="Reply">
+          <ImReply />
+        </IconButton>
       </div>
     </form>
   )
