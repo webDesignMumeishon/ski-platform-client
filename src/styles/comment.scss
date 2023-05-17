@@ -75,10 +75,10 @@
     background-color: $secondary-color;
     border-left: $primary-navy-blue solid 5px;
 
-
     .reply-photo{
+        display: contents;
         img{
-            width: 60px;
+            width: 45px;
             border-radius: 60px;
         }
     }
