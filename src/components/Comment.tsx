@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { ImReply } from 'react-icons/im';
-import { IconButton } from '@mui/material';
+import { ImReply, ImCancelCircle } from 'react-icons/im';
+import { Box, IconButton } from '@mui/material';
 
 import { IComment } from '../interfaces/comments'
 import {getFullDate} from '../utils/getDate'
@@ -68,14 +68,16 @@ const CreateCommentReply = (props: ReplyProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} action="" style={{padding: '1em'}}>
-      <button>x</button>
-      <div className='comment-reply'>
+    <form onSubmit={handleSubmit} action="" className='comment-reply-wrapper'>
+      <IconButton className='comment-reply-cancel' style={{padding: "0"}} onClick={props.handleShowReply}>
+          <ImCancelCircle />
+      </IconButton>
+      <Box className='comment-reply'>
         <input className='comment-reply-input'  placeholder={'Write a comment'} value={comment} onChange={handleChange}/>
         <IconButton aria-label="Reply">
           <ImReply />
         </IconButton>
-      </div>
+      </Box>
     </form>
   )
 }
@@ -84,11 +86,11 @@ const CreateCommentReply = (props: ReplyProps) => {
 const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.Element => {
 
   const [showReply, setShowReply] = useState<boolean>(false)
+
   const handleShowReply = () => {
     setShowReply(!showReply)
   }
   const isFirstComment = index === 0
-
 
   function compareFn(a: IComment, b: IComment) {
     if (a.id < b.id) {

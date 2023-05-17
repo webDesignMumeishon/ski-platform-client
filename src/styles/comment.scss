@@ -35,6 +35,18 @@
             border-bottom: 1px solid #d0d7de;
         }
 
+        .comment-reply-wrapper{
+            position: relative;
+            padding: 1.2em;
+        }
+
+        .comment-reply-cancel{
+            position: absolute;
+            top: 0;
+            right: 0px;
+            color: red
+        }
+
         .comment-reply{
 
             background: #f0f2f5;
