@@ -4,6 +4,7 @@ import { IComment } from '../interfaces/comments'
 import {getFullDate} from '../utils/getDate'
 import { CommentsStateProps } from './Comments';
 import CreateCommentReply from './CreateCommentReply';
+import Reply from './Reply';
 
 interface componentProps {
   comment: IComment
@@ -12,26 +13,7 @@ interface componentProps {
   setComments: React.Dispatch<React.SetStateAction<CommentsStateProps>>
 }
 
-interface Reply {
-  reply: IComment
-}
 
-const Replies = ({ reply }: Reply) => {
-  return (
-    <div className="reply-container">
-      <div className="reply-photo">
-        <img
-          src="https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
-          alt="Photo"
-        />
-      </div>
-
-      <div className="reply-content">
-        <p>{reply.text}</p>
-      </div>
-    </div>
-  )
-}
 
 const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.Element => {
 
@@ -71,7 +53,7 @@ const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.
 
         {replies.length > 0 &&
           replies.map((reply) => {
-            return <Replies key={reply.id} reply={reply} />
+            return <Reply key={reply.id} reply={reply} />
           })
         }
 
