@@ -3,11 +3,11 @@ import axios, { AxiosResponse } from "axios";
 class ServerCommunicator {
 	static baseURL = 'http://localhost:4000';
 	
-	static async doGetRequest<T, RequestBody = object>(extension: string, queryParams? : RequestBody): Promise<AxiosResponse<T>> {
+	static async doGetRequest<ResponseType, RequestBody = object>(extension: string, queryParams? : RequestBody): Promise<AxiosResponse<ResponseType>> {
 
         const requestURL = `${this.baseURL}/${extension}`
         
-        return await axios.get<T>(requestURL,
+        return axios.get<ResponseType>(requestURL,
             { 
                 params: queryParams,
                 withCredentials: true,
@@ -20,7 +20,7 @@ class ServerCommunicator {
 
     static async doPostRequest<RequestType, ResponseType>(extension : string, body : RequestType) : Promise<AxiosResponse<ResponseType>> {
         const requestURL = `${this.baseURL}/${extension}` 
-        return await axios.post<ResponseType>(requestURL,
+        return axios.post<ResponseType>(requestURL,
             body,
             {
                 withCredentials: true,
@@ -35,7 +35,7 @@ class ServerCommunicator {
 
         const requestURL = `${this.baseURL}/${extension}` 
 
-        return await axios.delete<T>(requestURL,
+        return axios.delete<T>(requestURL,
             {
                 withCredentials: true,
                 headers: {
