@@ -30,10 +30,11 @@
         }
 
         .comment-main{
-            font-size: 22px;
+            font-size: 18px;
             padding: 10px;
             position: relative;
             border-bottom: 1px solid #d0d7de;
+            margin-bottom: 10px;
         }
 
         .comment-reply-wrapper{
@@ -90,6 +91,7 @@
 
         .reply-meta-data{
             font-size: 14px;
+            color:#999999;
         }
     }
 
