@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {resortSlice} from './slices'
+import {resortSlice, userSlice} from './slices'
 
 export const store = configureStore({
   reducer: {
-    resortReducer: resortSlice.reducer
+    resortReducer: resortSlice.reducer,
+    userReducer: userSlice.reducer
   },
 })
 
