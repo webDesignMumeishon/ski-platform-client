@@ -12,6 +12,7 @@ import Market from '../components/Market'
 import Restaurants from '../components/Restaurants'
 import CreatePost from '../components/CreatePost'
 import Buddy from '../components/Buddy'
+import Main from '../components/Main'
 
 export default createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export default createBrowserRouter([
     errorElement: <ErrorPage />,
     // loader: userLoader,
     children: [
+      {
+        path: '/',
+        element: <Main />,
+      },
       {
         path: 'login',
         element: <Login />
