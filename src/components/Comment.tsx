@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Grid } from '@mui/material';
+
 
 import { IComment } from '../interfaces/comments'
 import {getFullDate} from '../utils/getDate'
@@ -6,16 +8,14 @@ import { CommentsStateProps } from './Comments';
 import CreateCommentReply from './CreateCommentReply';
 import Reply from './Reply';
 
-interface componentProps {
+type Props = {
   comment: IComment
   index: number
   replies: IComment[] | []
   setComments: React.Dispatch<React.SetStateAction<CommentsStateProps>>
 }
 
-
-
-const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.Element => {
+const Comment = ({ comment, replies, index, setComments }: Props): JSX.Element => {
 
   const [showReply, setShowReply] = useState<boolean>(false)
 
@@ -36,20 +36,18 @@ const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.
 
   replies.sort(compareFn)
 
-
   return (
-    <div className="comment-container" style={{paddingTop: isFirstComment ? '0px' : ''}}>
-      <div className="comment-content">
-        <div className="comment-header">
+    <Grid container className="comment-container" style={{paddingTop: isFirstComment ? '0px' : ''}}>
+      <Grid className="comment-content">
+        <Grid item  xs={12} className="comment-header">
           <p>
             <span>{comment.first_name}</span> commented on {getFullDate(new Date(comment.created_at))}
           </p>
-        </div>
+        </Grid>
 
-        <div className="comment-main">
+        <Grid xs={12} item className="comment-main">
           <p>{comment.text}</p>
-        </div>
-
+        </Grid>
 
         {replies.length > 0 &&
           replies.map((reply) => {
@@ -64,8 +62,8 @@ const Comment = ({ comment, replies, index, setComments }: componentProps): JSX.
           :
           <button onClick={handleShowReply}>Reply</button>
         }
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   )
 }
 

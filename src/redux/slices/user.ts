@@ -3,12 +3,15 @@ import { IUserLogged } from '../../interfaces/user'
 import UserService from '../../service/UserService'
 import { User } from '../../response/User'
 
+type StateUserSlice = IUserLogged & { isLoading: boolean}
+
 // Define the initial state using that type
-const initialState: IUserLogged = {
+const initialState: StateUserSlice  = {
 	firstName: '',
 	lastName: '',
 	email: '',
-	p_enabled: false
+	p_enabled: false,
+  isLoading: false
 }
 
 export const fetchUser = createAsyncThunk<User>(
@@ -25,17 +28,21 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(fetchUser.pending, (state) => {
-    //   state.isLoading = true;
       state = initialState;
       return state
     })
     .addCase(fetchUser.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-        state = action.payload;
+        const newState = {
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+          email: action.payload.email,
+          p_enabled: action.payload.p_enabled,
+          isLoading: false
+        }
+        state = newState
         return state
     })
     .addCase(fetchUser.rejected, (state) => {
-    //   state.isLoading = false;
       state = initialState;
       return state
     });
