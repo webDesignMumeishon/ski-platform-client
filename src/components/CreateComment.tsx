@@ -22,7 +22,7 @@ const CreateComment = (props: Props) => {
         const {data} = await CommentService.createNewComment(props.postId, comment)
         const newComment : IComment = {
             id: data.id,
-            created_at: data.createdAt,
+            created_at: data.created_at,
             parent: data.parent,
             text: data.text,
             first_name: data.first_name,
