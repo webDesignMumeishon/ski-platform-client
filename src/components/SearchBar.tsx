@@ -9,7 +9,6 @@ type CompProps = {
 
 const SearchBar = ({setResorts, setIsInputSelected}: CompProps) => {
     const [value, setValue] = useState<string>("");
-  
     const handleOnChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
       setValue(inputValue);
@@ -25,11 +24,7 @@ const SearchBar = ({setResorts, setIsInputSelected}: CompProps) => {
     const handleInputFocus = async () => {
         setIsInputSelected(true)
     };
-    
-    const handleInputBlur = () => {
-        setIsInputSelected(false)
-    };
-  
+
     return (
       <label htmlFor="Search">
             <input
@@ -38,7 +33,6 @@ const SearchBar = ({setResorts, setIsInputSelected}: CompProps) => {
                 onChange={handleOnChange}
                 value={value}
                 onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
             />
         </label>
     )

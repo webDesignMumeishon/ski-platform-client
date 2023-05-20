@@ -24,7 +24,7 @@ const Navbar = () => {
         <Grid container className="nav-bar-wrapper">
           <Grid item className="search-input">
             <SearchBar setResorts={setResorts} setIsInputSelected={setIsInputSelected}/>
-            <SearchBarResults searchResults={resorts} isInputSelected={isInputSelected}/>
+            <SearchBarResults searchResults={resorts} isInputSelected={isInputSelected} setIsInputSelected={setIsInputSelected}/>
           </Grid>
 
           <Grid item>
