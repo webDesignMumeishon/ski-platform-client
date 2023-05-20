@@ -18,6 +18,16 @@
     margin: 0;
 }
 
+.button-generic{
+    background-color: #24292f;
+    color: #fff;
+    border: none;
+    padding: 0.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
 .leaflet-container{
     height: 95vh;
 }

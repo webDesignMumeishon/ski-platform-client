@@ -60,7 +60,7 @@ const Comment = ({ comment, replies, index, setComments }: Props): JSX.Element =
           ?
           <CreateCommentReply parentId={comment.id} handleShowReply={handleShowReply} setComments={setComments}/>
           :
-          <button onClick={handleShowReply}>Reply</button>
+          <button className='button-generic' onClick={handleShowReply}>Reply</button>
         }
       </Grid>
     </Grid>
