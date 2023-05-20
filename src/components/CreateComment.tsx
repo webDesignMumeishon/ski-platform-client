@@ -52,7 +52,7 @@ const CreateComment = (props: Props) => {
                 />
             </Grid>
             <Grid item>
-                <button onClick={submitComment}>Comment</button>
+                <button className="button-generic" onClick={submitComment}>Comment</button>
             </Grid>
         </div>
     )

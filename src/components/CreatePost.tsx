@@ -43,7 +43,7 @@ const CreatePost = () => {
                     <Grid item>
                     </Grid>
                     <Grid item>
-                        <button onClick={submitComment}>Create Post</button>
+                        <button className="button-generic" onClick={submitComment}>Create Post</button>
                     </Grid>
                 </Grid>
             </Box>
