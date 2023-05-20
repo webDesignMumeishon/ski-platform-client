@@ -17,6 +17,11 @@ class ResortService {
         const request = new ResortRequest(state, town)
         return ServerFacade.getResort<IResort>(request);
     }
+
+    // GET
+    static async searchByKeyword(keyword: string) : Promise<AxiosResponse<IResort[]>> {
+        return ServerFacade.searchByKeyword<IResort[]>(keyword);
+    }
 }
 
 

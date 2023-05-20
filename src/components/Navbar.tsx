@@ -1,48 +1,13 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import {
-  FormControl,
-  MenuItem,
-  Grid
-} from "@mui/material";
-
-interface SearchResult {
-  id: string;
-  name: string;
-}
-
-interface SearchBarProps {
-  searchResults: SearchResult[];
-  open: boolean;
-}
-
-
-const mockResults = [
-  { id: "null", name: "null" },
-  { id: "null", name: "null" },
-  { id: "null", name: "null" },
-];
+import { useState } from "react";
+import {  Grid } from "@mui/material";
+import { IResort } from "../interfaces/resort";
+import SearchBar from "./SearchBar";
+import SearchBarResults from "./SearchBarResults";
 
 const Navbar = () => {
-  const [value, setValue] = useState<string>("");
+  const [resorts, setResorts] = useState<IResort[]>([]);
   const [isInputSelected, setIsInputSelected] = useState(false);
-
-  const handleInputFocus = () => {
-    setIsInputSelected(true);
-  };
-
-  const handleInputBlur = () => {
-    setIsInputSelected(false);
-  };
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-
-  const onSearch = (searchTerm: string) => {
-    searchTerm + '1'
-  };
-
 
   return (
     <Grid
@@ -58,20 +23,8 @@ const Navbar = () => {
       <Grid item xs={8} md={8} sm={7}>
         <Grid container className="nav-bar-wrapper">
           <Grid item className="search-input">
-            <label htmlFor="Search">
-              <input
-                id="Search"
-                placeholder="Search"
-                onChange={handleOnChange}
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-              />
-              <button onClick={() => onSearch(value)}>Search</button>
-              <SearchBar
-                open={isInputSelected}
-                searchResults={mockResults}
-              />
-            </label>
+            <SearchBar setResorts={setResorts} setIsInputSelected={setIsInputSelected}/>
+            <SearchBarResults searchResults={resorts} isInputSelected={isInputSelected}/>
           </Grid>
 
           <Grid item>
@@ -95,27 +48,5 @@ const Navbar = () => {
   );
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({
-  searchResults,
-  open,
-}) => {
-  const style: React.CSSProperties = {
-    background: "black",
-    position: "absolute",
-    width: "100%",
-    display: open ? "" : "none",
-  };
-  return (
-    <div>
-      <FormControl style={style}>
-        {searchResults.map((result) => (
-          <MenuItem key={result.id} value={result.id} autoFocus={true}>
-            {result.name}
-          </MenuItem>
-        ))}
-      </FormControl>
-    </div>
-  );
-};
 
 export default Navbar;

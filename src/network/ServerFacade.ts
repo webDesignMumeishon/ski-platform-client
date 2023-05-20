@@ -30,6 +30,13 @@ class ServerFacade {
 		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath, queryParams);
 	}
 
+	// GET
+	static async searchByKeyword<T>(keyword: string): Promise<AxiosResponse<T>> {
+		const urlPath = `${this.resort}/search`;
+		const queryParams = {keyword: keyword}
+		return await ServerCommunicator.doGetRequest<T, {keyword: string}>(urlPath, queryParams);
+	}
+
 	static async getSinglePost<T>(post: SinglePostRequest): Promise<AxiosResponse<T>> {
 		const urlPath = `${this.post}/single/${post.id}`;
 		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath);
