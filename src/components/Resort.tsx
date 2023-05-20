@@ -11,7 +11,6 @@ type PropsType = {
 }
 
 const Resort = ({resort} : PropsType) => {
-
     return (
         <Grid container lg={2} md={3} sm={4} xs={12} className='resort-container' justifyContent={'space-between'}>
             <Grid item  xs={1}>
