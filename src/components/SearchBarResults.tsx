@@ -12,9 +12,6 @@ interface CompProps {
 
 function useOutsideAlerter(ref: any, setIsInputSelected: any) {
   useEffect(() => {
-    /**
-     * Alert if clicked on outside of element
-     */
     function handleClickOutside(event: any) {
       if (ref.current && !ref.current.contains(event.target)) {
         setIsInputSelected(false)
