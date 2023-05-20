@@ -60,6 +60,7 @@
                     border: none;
                     outline: none;
                     background: inherit;
+                    width: 100%;
                 }
             }
         }
@@ -68,11 +69,12 @@
 }
 
 .reply-container{
-    margin: 0% 0% 2% 3%;
+    margin: 0% 3% 2% 3%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius: 5px;
+    // border-radius: 5px;
+    border-bottom: 1px #d0d7de solid;
     flex-direction: column;
     font-size: 18px;
 
