@@ -28,7 +28,7 @@ const Navbar = () => {
           </Grid>
 
           <Grid item>
-            <Link to="/">Home</Link>
+            <Link to="/">Map</Link>
           </Grid>
 
           <Grid item>
