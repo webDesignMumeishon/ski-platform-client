@@ -5,9 +5,9 @@ import {
   // Popup
 } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
+import BasicModal from './BasicModal';
 import { statesData } from './const/usa'
 // import { useNavigate } from "react-router-dom";
-import BasicModal from './Modal';
 import { useState } from 'react';
 
 type ComponentProps = object
@@ -16,10 +16,7 @@ type ComponentProps = object
 function Main({ }: ComponentProps) {
   const [open, setOpen] = useState(false);
   const [state, setState] = useState('')
-
   // const navigate = useNavigate();
-
-
   return (
     <div>
       <BasicModal open={open} setOpen={setOpen} state={state}/>
