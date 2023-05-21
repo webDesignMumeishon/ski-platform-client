@@ -26,6 +26,7 @@ const SearchBar = ({setResorts, setIsInputSelected}: CompProps) => {
     };
 
     return (
+      <div className="search-bar-container">
       <label htmlFor="Search">
             <input
                 id="Search"
@@ -35,6 +36,7 @@ const SearchBar = ({setResorts, setIsInputSelected}: CompProps) => {
                 onFocus={handleInputFocus}
             />
         </label>
+      </div>
     )
   }
   

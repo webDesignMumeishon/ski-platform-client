@@ -3,6 +3,7 @@ import { FormControl, MenuItem } from "@mui/material";
 import { IResort } from "../interfaces/resort";
 import { capitalizeFirstLetter } from "../utils/handleWords";
 import { Link } from "react-router-dom";
+import { GoLocation } from 'react-icons/go';
 
 interface CompProps {
   searchResults: IResort[];
@@ -28,25 +29,33 @@ function useOutsideAlerter(ref: any, setIsInputSelected: any) {
 
 const SearchBarResults: React.FC<CompProps> = ({ searchResults, isInputSelected, setIsInputSelected }) => {
   const style: React.CSSProperties = {
-    background: "black",
     position: "absolute",
     width: "100%",
-    display: isInputSelected ? "" : 'none'
   };
 
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setIsInputSelected);
+  const areLocationsFound = searchResults.length > 0
 
   return (
-    <div>
-      <FormControl style={style} ref={wrapperRef}>
-        {searchResults.map((resort) => (
-          <MenuItem key={resort.id} value={resort.id}>
-            <Link to={`/${resort.state}/${resort.city}/report`} reloadDocument>
-              {capitalizeFirstLetter(resort.city)}
-            </Link>
-          </MenuItem>
-        ))}
+    <div className="search-bar-result-container" >
+      <FormControl style={style} ref={wrapperRef} className="search-bar-result-form" >
+        {isInputSelected && areLocationsFound? 
+          <ul>
+          {searchResults.map((resort) => (
+            <MenuItem key={resort.id} value={resort.id}>
+              <Link to={`/${resort.state}/${resort.city}/report`} reloadDocument >
+                <GoLocation/>
+                <span className="search-bar-location-name">{capitalizeFirstLetter(resort.city)}</span>
+              </Link>
+            </MenuItem>
+          ))}
+          </ul> 
+        : 
+        null
+        }
+      
+    
       </FormControl>
     </div>
   );

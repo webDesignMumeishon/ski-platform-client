@@ -1,6 +1,6 @@
 @import '_colors';
 
-.navbar-container{
+.navbar-container {
     z-index: 100000;
     background-color: $winter-palette-dodger-blue;
     position: relative;
@@ -11,30 +11,30 @@
     font-weight: 700;
     font-size: 14px;
 
-    .icon-navbar{
+    .icon-navbar {
         filter: invert(60%) sepia(42%) saturate(30%) hue-rotate(130deg) brightness(99%) contrast(1000%);
         margin-right: 5px;
     }
 
-    a{
+    a {
         margin-right: 10px;
         text-decoration: none;
         color: #FFF;
         cursor: pointer;
     }
 
-    a:hover{
+    a:hover {
         color: #bebfc1
     }
 
-    .nav-bar-wrapper{
+    .nav-bar-wrapper {
 
-        .search-input{
+        .search-input {
             margin-right: 10px;
             position: relative;
         }
 
-        p{
+        p {
             border: solid gray 1px;
             margin-right: 10px;
         }
@@ -44,3 +44,63 @@
 
 }
 
+.search-bar-container{
+    input:focus{
+        width: 100%;
+        transition: width 0.3s, padding 0.3s;
+    }
+
+    input{
+        padding: .4rem;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+    }
+
+}
+
+.search-bar-result-container {
+
+    .search-bar-result-form {
+
+        .search-bar-location-name{
+            margin-left: 5px;
+        }
+        
+        ul {
+            width: 100%;
+            background-color: $background-white;
+            position: absolute;
+            top: calc(100% + .5rem);
+            left: 0;
+            padding: .5rem;
+            margin: 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        li {
+            margin: 0;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+
+            a {
+                color: #000;
+                width: 100%;
+            }
+
+        }
+
+        li:first-child {
+            padding-top: 0;
+        }
+
+        li:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+    }
+
+}
