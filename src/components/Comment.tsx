@@ -38,7 +38,7 @@ const Comment = ({ comment, replies, index, setComments }: Props): JSX.Element =
 
   return (
     <Grid container className="comment-container" style={{paddingTop: isFirstComment ? '0px' : ''}}>
-      <Grid className="comment-content">
+      <Grid className="comment-content" xs={12}>
         <Grid item  xs={12} className="comment-header">
           <p>
             <span>{comment.first_name}</span> commented on {getFullDate(new Date(comment.created_at))}
