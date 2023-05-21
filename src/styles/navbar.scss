@@ -11,6 +11,11 @@
     font-weight: 700;
     font-size: 14px;
 
+    .icon-navbar{
+        filter: invert(60%) sepia(42%) saturate(30%) hue-rotate(130deg) brightness(99%) contrast(1000%);
+        margin-right: 5px;
+    }
+
     a{
         margin-right: 10px;
         text-decoration: none;

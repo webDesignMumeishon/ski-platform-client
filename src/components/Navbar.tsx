@@ -4,6 +4,7 @@ import {  Grid } from "@mui/material";
 import { IResort } from "../interfaces/resort";
 import SearchBar from "./SearchBar";
 import SearchBarResults from "./SearchBarResults";
+import skibuds from './goggles1.png';
 
 const Navbar = () => {
   const [resorts, setResorts] = useState<IResort[]>([]);
@@ -16,8 +17,13 @@ const Navbar = () => {
       alignItems="center"
       justifyContent={"space-between"}
     >
-      <Grid item lg={1} style={{ marginRight: "10px" }}>
-        <p>ICON</p>
+      <Grid item lg={1} sx={{display: 'contents'}}>
+          <Link to='/'>
+            <Grid container alignItems={'center'}>
+              <img src={skibuds} style={{width: '30px'}} className="icon-navbar"/>
+              <span>Skibuds</span>
+            </Grid>
+          </Link>
       </Grid>
 
       <Grid item xs={8} md={8} sm={7}>
