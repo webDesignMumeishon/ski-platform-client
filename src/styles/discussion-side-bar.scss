@@ -1,3 +1,19 @@
-.side-bar-container{
+@import '_colors';
+
+.side-bar-wrapper{
     width: 25%;
+
+    .like-container{
+        background-color: #d0d7de;
+        color: #000;
+        padding: 0.5em;
+        height: 20vh;
+        border-radius: 10px;
+        border: $winter-palette-dodger-blue solid 2px;
+    }
+    
+    .item-container{
+        width: 60%;
+    }
+
 }
