@@ -4,7 +4,7 @@ import {  Grid } from "@mui/material";
 import { IResort } from "../interfaces/resort";
 import SearchBar from "./SearchBar";
 import SearchBarResults from "./SearchBarResults";
-import skibuds from './goggles1.png';
+import skibuds from '../assets/goggles.png';
 
 const Navbar = () => {
   const [resorts, setResorts] = useState<IResort[]>([]);
