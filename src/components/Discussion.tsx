@@ -30,7 +30,6 @@ export async function loader(context: LoaderFunctionArgs) : Promise<IPost> {
 function Discussion() {
   const post = (useLoaderData() as  unknown as IPost);
 
-
   return (
     <div className="discussion-container">
       <DiscussionTitle post={post} />

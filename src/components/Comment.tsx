@@ -7,6 +7,8 @@ import {getFullDate} from '../utils/getDate'
 import { CommentsStateProps } from './Comments';
 import CreateCommentReply from './CreateCommentReply';
 import Reply from './Reply';
+import MainButton from "./Button";
+
 
 type Props = {
   comment: IComment
@@ -60,7 +62,7 @@ const Comment = ({ comment, replies, index, setComments }: Props): JSX.Element =
           ?
           <CreateCommentReply parentId={comment.id} handleShowReply={handleShowReply} setComments={setComments}/>
           :
-          <button className='button-generic' onClick={handleShowReply}>Reply</button>
+          <MainButton callback={handleShowReply}>Reply</MainButton>
         }
       </Grid>
     </Grid>

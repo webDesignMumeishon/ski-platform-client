@@ -4,6 +4,8 @@ import { useState } from "react";
 import { IComment } from "../interfaces/comments"
 import CommentService from '../service/CommentService'
 import {CommentsStateProps} from './Comments'
+import MainButton from "./Button";
+
 
 type Props = {
     postId: string
@@ -41,7 +43,7 @@ const CreateComment = (props: Props) => {
         <div>
             <Grid item sx={{}}>
                 <TextField
-                    sx={{width: "100%", margin: 'auto',display: 'flex', background: '#FFF', marginTop: '1%'}}
+                    sx={{width: "100%", margin: 'auto',display: 'flex', background: '#FFF', marginTop: '1%', marginBottom:'1em'}}
                     id="outlined-multiline-static"
                     multiline
                     label="Add comment!"
@@ -52,7 +54,7 @@ const CreateComment = (props: Props) => {
                 />
             </Grid>
             <Grid item>
-                <button className="button-generic" onClick={submitComment}>Comment</button>
+                <MainButton callback={submitComment}>Comment</MainButton>
             </Grid>
         </div>
     )
