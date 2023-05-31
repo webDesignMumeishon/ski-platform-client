@@ -5,6 +5,7 @@ import Comment from "./Comment"
 import { IComment } from "../interfaces/comments"
 import PostService from "../service/PostService";
 import CreateComment from './CreateComment'
+import DiscussionSideBar from "./DiscussionSideBar";
 
 export type CommentsStateProps = [] | IComment[]
 
@@ -21,7 +22,11 @@ const CommentsWrapper = (props: ComponentProps) => {
     return (
         <div className={props.hasComment ? withPseudoElement : withoutPseudoElement}>
             {props.children}
-            {props.postId !== undefined ? <CreateComment postId={props.postId} setParentComments={props.setParentComments}/> : null}
+            {props.postId !== undefined ? 
+                <CreateComment postId={props.postId} setParentComments={props.setParentComments}/> 
+                : 
+                null
+            }
         </div>
     )
 }
@@ -52,6 +57,7 @@ const Comments = () => {
 
     if(parentComments !== null && parentComments.length > 0){
         return (
+        <div className="discussion-bucket">
             <CommentsWrapper setParentComments={setParentComments} postId={postId} hasComment={true}>
                 <>
                 {parentComments.map((comment: IComment, index : number) => {
@@ -67,6 +73,8 @@ const Comments = () => {
                 })}
                 </>
             </CommentsWrapper>
+            <DiscussionSideBar numberComments={9} numberLikes={9}/>
+        </div>
         ) 
     }
 

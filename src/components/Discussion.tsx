@@ -4,7 +4,6 @@ import {
 } from "react-router-dom";
 
 import Comments from "./Comments";
-import DiscussionSideBar from "./DiscussionSideBar";
 import DiscussionTitle from "./DiscussionTitle";
 import PostService from "../service/PostService";
 import {IPost} from '../interfaces/post'
@@ -33,10 +32,7 @@ function Discussion() {
   return (
     <div className="discussion-container">
       <DiscussionTitle post={post} />
-      <div className="discussion-bucket">
-        <Comments />
-        <DiscussionSideBar numberComments={9} numberLikes={9}/>
-      </div>
+      <Comments />
     </div>
   );
 }

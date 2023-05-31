@@ -6,7 +6,6 @@ import CommentService from '../service/CommentService'
 import {CommentsStateProps} from './Comments'
 import MainButton from "./Button";
 
-
 type Props = {
     postId: string
     setParentComments: React.Dispatch<React.SetStateAction<CommentsStateProps>>
