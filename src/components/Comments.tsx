@@ -34,6 +34,7 @@ const CommentsWrapper = (props: ComponentProps) => {
 const Comments = () => {
     const {postId} = useParams();
     const [comments, setComments] = useState<CommentsStateProps>([])
+    const [likes, setLikes] = useState<string>('')
     const [parentComments, setParentComments] = useState<CommentsStateProps>([])
 
     const getCommentReplies = (parentCommentId : number | null) => {
@@ -46,10 +47,11 @@ const Comments = () => {
         const fetchData = async () : Promise<void> => {
             if(postId !== undefined){
                 const response = await PostService.getComments(postId)
-                const comments = response.data
-                const parentComments = comments.filter(comment => comment.parent === null)
+                const {posts, likes: likesCount} = response.data
+                const parentComments = posts.filter(comment => comment.parent === null)
                 setParentComments(parentComments)
                 setComments(comments)
+                setLikes(likesCount)
             }
         }
         fetchData()
@@ -73,7 +75,7 @@ const Comments = () => {
                 })}
                 </>
             </CommentsWrapper>
-            <DiscussionSideBar numberComments={9} numberLikes={9}/>
+            <DiscussionSideBar numberComments={parentComments.length} numberLikes={likes}/>
         </div>
         ) 
     }

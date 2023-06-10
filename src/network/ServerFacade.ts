@@ -44,9 +44,7 @@ class ServerFacade {
 
     //GET
     static async getComments<T>(postId: string): Promise<AxiosResponse<T>> {
-
 		const urlPath = `${this.post}/${postId}`;
-
 		return await ServerCommunicator.doGetRequest<T>(urlPath);
 	}
 

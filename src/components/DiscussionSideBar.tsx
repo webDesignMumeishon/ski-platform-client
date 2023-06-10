@@ -3,7 +3,7 @@ import { FcLike } from "react-icons/fc";
 import { FaRegCommentDots } from "react-icons/fa";
 
 type Props = {
-  numberLikes: number
+  numberLikes: string
   numberComments: number
 }
 

@@ -6,6 +6,11 @@ import { IPost } from '../interfaces/post';
 import { PostListRequest, SinglePostRequest } from '../request/Post';
 import PostFacade from '../network/PostFacade';
 
+interface ICommentAndLike{
+	posts: IComment[]
+	likes: string
+}
+
 class PostService {
 
 	// GET
@@ -21,8 +26,8 @@ class PostService {
 	}
 
 	// GET
-    static async getComments(postId: string): Promise<AxiosResponse<IComment[]>> {
-        return await ServerFacade.getComments<IComment[]>(postId);
+    static async getComments(postId: string): Promise<AxiosResponse<ICommentAndLike>> {
+        return await ServerFacade.getComments<ICommentAndLike>(postId);
 	}
 
 	// POST
