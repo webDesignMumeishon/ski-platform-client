@@ -1,15 +1,12 @@
 import { AxiosResponse } from 'axios';
 
 import ServerFacade from "../network/ServerFacade";
-import { IComment } from '../interfaces/comments';
+import { ICommentAndLike } from '../interfaces/comments';
 import { IPost } from '../interfaces/post';
 import { PostListRequest, SinglePostRequest } from '../request/Post';
 import PostFacade from '../network/PostFacade';
 
-interface ICommentAndLike{
-	posts: IComment[]
-	likes: string
-}
+
 
 class PostService {
 

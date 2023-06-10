@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import Comment from "./Comment"
 import { IComment } from "../interfaces/comments"
-import PostService from "../service/PostService";
 import CreateComment from './CreateComment'
 import DiscussionSideBar from "./DiscussionSideBar";
+import { Grid } from "@mui/material";
 
 export type CommentsStateProps = [] | IComment[]
 
@@ -31,10 +31,15 @@ const CommentsWrapper = (props: ComponentProps) => {
     )
 }
 
-const Comments = () => {
+type ElementProps = {
+    likes: string,
+    commentsResult: CommentsStateProps
+}
+
+const Comments = ({likes, commentsResult}: ElementProps) => {
     const {postId} = useParams();
+    const filteredComments = commentsResult.filter(comment => comment.parent === null)
     const [comments, setComments] = useState<CommentsStateProps>([])
-    const [likes, setLikes] = useState<string>('')
     const [parentComments, setParentComments] = useState<CommentsStateProps>([])
 
     const getCommentReplies = (parentCommentId : number | null) => {
@@ -44,22 +49,13 @@ const Comments = () => {
     }
 
     useEffect(() => {
-        const fetchData = async () : Promise<void> => {
-            if(postId !== undefined){
-                const response = await PostService.getComments(postId)
-                const {posts, likes: likesCount} = response.data
-                const parentComments = posts.filter(comment => comment.parent === null)
-                setParentComments(parentComments)
-                setComments(comments)
-                setLikes(likesCount)
-            }
-        }
-        fetchData()
-    }, [])
+        setComments(commentsResult);
+        setParentComments(filteredComments);
+      }, [commentsResult, filteredComments]);
 
     if(parentComments !== null && parentComments.length > 0){
         return (
-        <div className="discussion-bucket">
+        <Grid container justifyContent={'space-between'}>
             <CommentsWrapper setParentComments={setParentComments} postId={postId} hasComment={true}>
                 <>
                 {parentComments.map((comment: IComment, index : number) => {
@@ -76,7 +72,7 @@ const Comments = () => {
                 </>
             </CommentsWrapper>
             <DiscussionSideBar numberComments={parentComments.length} numberLikes={likes}/>
-        </div>
+        </Grid>
         ) 
     }
 

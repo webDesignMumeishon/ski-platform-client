@@ -1,9 +1,8 @@
-import {IPost} from '../interfaces/post'
 import {getFullDate} from '../utils/getDate'
 import Title from './Title';
 
 interface componentProps {
-  post: IPost
+  post: any
 }
 
 function DiscussionTitle( {post} : componentProps) {

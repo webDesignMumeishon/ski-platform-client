@@ -2,38 +2,40 @@ import {
   useLoaderData,
   LoaderFunctionArgs,
 } from "react-router-dom";
+import { Grid } from "@mui/material";
 
 import Comments from "./Comments";
 import DiscussionTitle from "./DiscussionTitle";
 import PostService from "../service/PostService";
-import {IPost} from '../interfaces/post'
+import { IComment, ICommentAndLike } from "../interfaces/comments";
 
-export async function loader(context: LoaderFunctionArgs) : Promise<IPost> {
+export async function loader(context: LoaderFunctionArgs) : Promise<ICommentAndLike> {
   if(typeof context.params.postId === 'string'){
-    const post = await PostService.getSinglePost(context.params.postId)
+    const post = await PostService.getComments(context.params.postId)
     return post.data;
   }
   return {
-    id: 0,
-    user_id: 0,
-    title: '',
-    created_at: new Date(),
-    number_comments: '',
-    number_likes: '',
-    first_name: '',
-    last_name: '',
-    did_like: 0,
+    post: {
+      first_name: "",
+      last_name: "",
+      created_at: new Date()
+    },
+    comments: [],
+    likes: '0'
   }
 }
 
+export type CommentsStateProps = [] | IComment[]
+
+
 function Discussion() {
-  const post = (useLoaderData() as  unknown as IPost);
+  const post = (useLoaderData() as  unknown as ICommentAndLike);
 
   return (
-    <div className="discussion-container">
-      <DiscussionTitle post={post} />
-      <Comments />
-    </div>
+    <Grid container>
+      <DiscussionTitle post={post.post} />
+      <Comments likes={post.likes} commentsResult={post.comments}/>
+    </Grid>
   );
 }
 

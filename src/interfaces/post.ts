@@ -10,6 +10,8 @@ export interface IPost {
     did_like: number
 }
 
+export type PostTitle = Pick<IPost, 'created_at' | 'first_name' | 'last_name'>
+
 export interface IPostListRequest{
 	town: string,
 	state: string
