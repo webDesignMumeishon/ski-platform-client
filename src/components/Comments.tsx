@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom';
 
 import Comment from "./Comment"
@@ -7,10 +6,11 @@ import CreateComment from './CreateComment'
 import DiscussionSideBar from "./DiscussionSideBar";
 import { Grid } from "@mui/material";
 import Title from "./Title";
+import useGetComments from './hooks/useComments';
 
 export type CommentsStateProps = [] | IComment[]
 
-interface ComponentProps{
+interface ComponentProps {
     setParentComments: any
     children: JSX.Element
     postId: string | undefined
@@ -39,20 +39,8 @@ type ElementProps = {
 
 const Comments = ({likes, commentsResult}: ElementProps) => {
     const {postId} = useParams();
-    const filteredComments = commentsResult.filter(comment => comment.parent === null)
-    const [comments, setComments] = useState<CommentsStateProps>([])
-    const [parentComments, setParentComments] = useState<CommentsStateProps>([])
 
-    const getCommentReplies = (parentCommentId : number | null) => {
-        return comments.filter(comment => {
-            return comment.parent === parentCommentId
-        })
-    }
-
-    useEffect(() => {
-        setComments(commentsResult);
-        setParentComments(filteredComments);
-    }, []);
+    const {parentComments, getCommentReplies, setParentComments, setComments} = useGetComments(commentsResult)
 
     if(parentComments !== null && parentComments.length > 0){
         return (
