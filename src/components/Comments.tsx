@@ -6,6 +6,7 @@ import { IComment } from "../interfaces/comments"
 import CreateComment from './CreateComment'
 import DiscussionSideBar from "./DiscussionSideBar";
 import { Grid } from "@mui/material";
+import Title from "./Title";
 
 export type CommentsStateProps = [] | IComment[]
 
@@ -51,7 +52,7 @@ const Comments = ({likes, commentsResult}: ElementProps) => {
     useEffect(() => {
         setComments(commentsResult);
         setParentComments(filteredComments);
-      }, [commentsResult, filteredComments]);
+    }, []);
 
     if(parentComments !== null && parentComments.length > 0){
         return (
@@ -60,7 +61,7 @@ const Comments = ({likes, commentsResult}: ElementProps) => {
                 <>
                 {parentComments.map((comment: IComment, index : number) => {
                     return (
-                        <Comment 
+                        <Comment
                             key={comment.id}
                             index={index}  
                             comment={comment} 
@@ -78,7 +79,7 @@ const Comments = ({likes, commentsResult}: ElementProps) => {
 
     return (
         <CommentsWrapper setParentComments={setParentComments} postId={postId} hasComment={false}>
-            <h1>No comments yet. Be the first to leave a comment!</h1>
+            <Title>No comments yet. Be the first to leave a comment!</Title>
         </CommentsWrapper>
     )
 }
