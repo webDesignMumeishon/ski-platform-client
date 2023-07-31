@@ -4,8 +4,8 @@ import { CommentsStateProps } from "../Comments"
 
 
 const setParentsComments  = (comments: CommentsStateProps, setParentComments:  React.Dispatch<React.SetStateAction<CommentsStateProps>>) => {
-    const filteredComments = comments.filter(comment => comment.parent === null)
-    setParentComments(filteredComments);
+    const filteredParentComments = comments.filter(comment => comment.parent === null) // parent can be either a number or null, if null it means it is a parent comment
+    setParentComments(filteredParentComments);
 }
 
 
