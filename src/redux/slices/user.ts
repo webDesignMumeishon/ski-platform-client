@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { IUserLogged } from '../../interfaces/user'
+import { IUser } from '../../interfaces/user'
 import UserService from '../../service/UserService'
 import { User } from '../../response/User'
 
-type StateUserSlice = IUserLogged & { isLoading: boolean}
+type StateUserSlice = IUser & { isLoading: boolean}
 
 // Define the initial state using that type
 const initialState: StateUserSlice  = {
@@ -11,7 +11,8 @@ const initialState: StateUserSlice  = {
 	lastName: '',
 	email: '',
 	p_enabled: false,
-  isLoading: false
+  isLoading: true,
+  logged: false
 }
 
 export const fetchUser = createAsyncThunk<User>(
@@ -37,7 +38,8 @@ export const userSlice = createSlice({
           lastName: action.payload.lastName,
           email: action.payload.email,
           p_enabled: action.payload.p_enabled,
-          isLoading: false
+          isLoading: false,
+          logged: action.payload.firstName.length > 0 ?? false
         }
         state = newState
         return state

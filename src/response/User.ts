@@ -1,7 +1,7 @@
 import Base from './Base';
-import {IUserLogged} from '../interfaces/user'
+import {IUser} from '../interfaces/user'
 
-export class User extends Base implements IUserLogged{
+export class User extends Base implements IUser{
     private _firstName: string
     private _lastName: string
     private _email: string

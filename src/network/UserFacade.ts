@@ -2,7 +2,7 @@ import Message from '../eums/Message';
 
 import ServerCommunicator from './ServerCommunicator';
 import { User } from '../response/User';
-import { IUserLogged } from '../interfaces/user';
+import { IUser } from '../interfaces/user';
 
 class UserFacade {
     static user = 'user'
@@ -10,7 +10,7 @@ class UserFacade {
 	static async getUser(): Promise<User> {
 		const urlPath = `${this.user}/me`;
         try{
-			const response = await ServerCommunicator.doGetRequest<IUserLogged>(urlPath);
+			const response = await ServerCommunicator.doGetRequest<IUser>(urlPath);
 			return new User(
 				response.status, 
 				true, 

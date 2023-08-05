@@ -3,9 +3,10 @@ export interface ILogin{
 	password: string
 }
 
-export interface IUserLogged{
+export interface IUser{
 	firstName: string,
 	lastName: string,
 	email: string,
 	p_enabled: boolean
+	logged?: boolean
 }

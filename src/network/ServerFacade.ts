@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 
 import ServerCommunicator from './ServerCommunicator';
-import { ILogin, IUserLogged } from '../interfaces/user';
+import { ILogin, IUser } from '../interfaces/user';
 import { IPostListRequest } from '../interfaces/post';
 import Login from '../request/Login';
 import LikeResponse from '../response/Like';
@@ -55,7 +55,7 @@ class ServerFacade {
 		const data = { email: login.email, password: login.password }
 
 		try{
-			const response = await ServerCommunicator.doPostRequest<ILogin, IUserLogged>(urlPath, data);
+			const response = await ServerCommunicator.doPostRequest<ILogin, IUser>(urlPath, data);
 			return new User(
 				response.status, 
 				true, 
