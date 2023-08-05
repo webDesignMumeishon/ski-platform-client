@@ -11,7 +11,7 @@ import Report from '../components/Report'
 import Market from '../components/Market'
 import Restaurants from '../components/Restaurants'
 import CreatePost from '../components/CreatePost'
-import Buddy from '../components/Buddy'
+import BuddyRiding from '../components/Buddy'
 import Main from '../components/Main'
 
 export default createBrowserRouter([
@@ -66,7 +66,7 @@ export default createBrowserRouter([
           },
           {
             path: '/:state/:town/buddy-riding',
-            element: <Buddy />
+            element: <BuddyRiding />
           }
         ]
       }
