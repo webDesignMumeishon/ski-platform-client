@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { IResortReport } from '../../interfaces/resort'
 import ResortService from '../../service/ResortService'
-import { AxiosResponse } from 'axios'
 import { ResortRequest } from '../../request/Resort'
 
+type StateResortSlice = IResortReport & { isLoading: boolean}
+
 // Define the initial state using that type
-const initialState: IResortReport = {
+const initialState: StateResortSlice = {
   id: 0,
   city: 'Snowshoe',
   state: 'WV',
@@ -13,13 +14,16 @@ const initialState: IResortReport = {
   openTerrain: '',
   openTrails: '',
   snowConditions: '',
-  status: false
+  status: false,
+  isLoading: true
 }
 
-export const fetchResort = createAsyncThunk<AxiosResponse<IResortReport>, ResortRequest>(
+// <IResortReport (return type), ResortRequest (params type)>
+export const fetchResort = createAsyncThunk<IResortReport, ResortRequest>(
     'resort/fetch',
     async (params) => {
-      return await ResortService.getResortReport(params.state, params.town)
+      const resort =  await ResortService.getResortReport(params.state, params.town)
+      return resort.data
     }
 )
 
@@ -30,23 +34,25 @@ export const resortSlice = createSlice({
   extraReducers: (builder) => {
     builder
     .addCase(fetchResort.pending, (state) => {
-    //   state.isLoading = true;
+      state.isLoading = true;
       state = initialState;
       return state
     })
     .addCase(fetchResort.fulfilled, (state, action) => {
-    //   state.isLoading = false;
-        state = action.payload.data;
-        return state
+        return {
+          ...state,
+          ...action.payload,
+          isLoading: false
+        }
     })
-    .addCase(fetchResort.rejected, (state) => {
-    //   state.isLoading = false;
-      state = initialState;
-      return state
+    .addCase(fetchResort.rejected, () => {
+      return {
+        ...initialState,
+        isLoading: false,
+      };
     });
   }
 })
 
-// export const { getResort } = resortSlice.actions
 export const { } = resortSlice.actions
 

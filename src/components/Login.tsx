@@ -16,6 +16,9 @@ import UserService from "../service/UserService";
 import Message from "../eums/Message";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import { useAppDispatch } from "../redux/hooks";
+import { fetchUser } from "../redux/slices/user";
+
 
 function Copyright(props: {sx: object}) {
   return (
@@ -39,6 +42,7 @@ const theme = createTheme();
 
 export default function Login() {
   const [isLogged, setIsLogged] = useState(false);
+  const dispatch = useAppDispatch()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -49,6 +53,7 @@ export default function Login() {
 
     if (typeof email === "string" && typeof password === "string") {
       const result = await UserService.userLogin(email, password);
+      dispatch(fetchUser())
 
       if (result.success) {
         alert(Message.SUCCESS);
