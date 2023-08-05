@@ -25,7 +25,7 @@ function Posts() {
         return <SinglePost key={post.id} post={post}/>
     })
 
-    if(list.length === 0){
+    if(list.length === 10){
         return <EmptyPost/>
     }
 
