@@ -1,8 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, createAction } from "@reduxjs/toolkit";
 import { IUser } from "../../interfaces/user";
 import UserService from "../../service/UserService";
 
 type StateUserSlice = IUser & { isLoading: boolean };
+
+
 
 // Define the initial state using that type
 const initialState: StateUserSlice = {
@@ -27,6 +29,9 @@ export const fetchUser = createAsyncThunk<IUser>("user/fetch", async () => {
   }
   return user
 });
+
+export const resetUserState = createAction("user/resetState");
+
 
 export const userSlice = createSlice({
   name: "user",
@@ -53,6 +58,10 @@ export const userSlice = createSlice({
           ...initialState,
           isLoading: false,
         };
+      })
+      .addCase(resetUserState, (state) => {
+        // Reset the state to the initial values without modifying other properties
+        Object.assign(state, initialState);
       });
   },
 });

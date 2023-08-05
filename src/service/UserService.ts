@@ -10,6 +10,10 @@ class UserService {
         return await ServerFacade.userLogin(login)
 	}
 
+	static async userLogout (): Promise<void> {
+        return await UserFacade.userLogut()
+	}
+
 	static async getUser(): Promise<User> {
         return UserFacade.getUser()
 	}
