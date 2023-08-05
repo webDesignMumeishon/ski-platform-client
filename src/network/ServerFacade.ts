@@ -9,7 +9,7 @@ import {LikeRequest} from '../request/Like';
 import { ILikeRequest } from '../interfaces/like';
 import { User } from '../response/User';
 import Message from '../eums/Message';
-import { PostListRequest, SinglePostRequest } from '../request/Post';
+import { SinglePostRequest } from '../request/Post';
 // Resort
 import { ResortRequest } from '../request/Resort';
 
@@ -20,15 +20,7 @@ class ServerFacade {
     static like = 'like'
     static resort = 'resort'
 
-	// GET
-	static async getPostsList<T>(post: PostListRequest): Promise<AxiosResponse<T>> {
-        
-		const urlPath = `${this.post}/list/posts`;
 
-		const queryParams = { town: post.town, state: post.state }
-
-		return await ServerCommunicator.doGetRequest<T, IPostListRequest>(urlPath, queryParams);
-	}
 
 	// GET
 	static async searchByKeyword<T>(keyword: string): Promise<AxiosResponse<T>> {

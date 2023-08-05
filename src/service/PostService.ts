@@ -11,9 +11,9 @@ import PostFacade from '../network/PostFacade';
 class PostService {
 
 	// GET
-	static async getListPosts(city: string, state: string): Promise<AxiosResponse<IPost[]>> {
+	static async getListPosts(city: string, state: string): Promise<IPost[]> {
 		const bodyRequest = new PostListRequest(city, state)
-        return await ServerFacade.getPostsList<IPost[]>(bodyRequest);
+        return PostFacade.getPostsList(bodyRequest);
 	}
 
 	// GET
