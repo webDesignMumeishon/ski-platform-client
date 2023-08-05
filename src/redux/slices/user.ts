@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IUser } from "../../interfaces/user";
 import UserService from "../../service/UserService";
-import { User } from "../../response/User";
 
 type StateUserSlice = IUser & { isLoading: boolean };
 
@@ -15,8 +14,18 @@ const initialState: StateUserSlice = {
   logged: false,
 };
 
-export const fetchUser = createAsyncThunk<User>("user/fetch", async () => {
-  return await UserService.getUser();
+export const fetchUser = createAsyncThunk<IUser>("user/fetch", async () => {
+  const response = await UserService.getUser();
+
+  const user: StateUserSlice = {
+    firstName: response.firstName,
+    lastName: response.lastName,
+    email: response.email,
+    p_enabled: response.p_enabled,
+    isLoading: false,
+    logged: response.code === 200 ? true : false,
+  }
+  return user
 });
 
 export const userSlice = createSlice({
@@ -34,12 +43,8 @@ export const userSlice = createSlice({
         // Update the state by returning a new object
         return {
           ...state,
-          firstName: action.payload.firstName,
-          lastName: action.payload.lastName,
-          email: action.payload.email,
-          p_enabled: action.payload.p_enabled,
-          isLoading: false,
-          logged: action.payload.firstName.length > 0 ?? false,
+          ...action.payload,
+          isLoading: false
         };
       })
       .addCase(fetchUser.rejected, () => {

@@ -11,7 +11,7 @@ class UserService {
 	}
 
 	static async getUser(): Promise<User> {
-        return await UserFacade.getUser()
+        return UserFacade.getUser()
 	}
 }
 
