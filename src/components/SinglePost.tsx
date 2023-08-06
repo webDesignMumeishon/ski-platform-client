@@ -6,6 +6,7 @@ import { IPost } from "../interfaces/post";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import HTTP from "../eums/http";
 import LikeService from "../service/LikeService";
+import useGetLocation from "./hooks/useGetLocation";
 
 type props = {
   post: IPost;
@@ -14,9 +15,9 @@ type props = {
 function SinglePost({ post }: props) {
   const [likePost, setLikePost] = useState(0);
   const [numberLikes, setNumberLikes] = useState(0);
-
-  const fetchedUser = useAppSelector((state) => state.userReducer);
   const navigate = useNavigate();
+  const currentUrl = useGetLocation();
+  const fetchedUser = useAppSelector((state) => state.userReducer);
 
   const likePostHandler = async () => {
     try {
@@ -38,8 +39,8 @@ function SinglePost({ post }: props) {
     }
   };
 
-  const handlePublicLike = () => {
-    navigate(`/login`);
+  const goLogin = () => {
+    navigate(`/login`, currentUrl);
   };
 
   useEffect(() => {
@@ -57,7 +58,7 @@ function SinglePost({ post }: props) {
       </div>
       <div
         className="post-icon-likes"
-        onClick={fetchedUser.logged ? likePostHandler : handlePublicLike}
+        onClick={fetchedUser.logged ? likePostHandler : goLogin}
       >
         <KeyboardArrowUpRoundedIcon
           fontSize="large"

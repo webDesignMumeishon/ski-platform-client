@@ -18,7 +18,7 @@ import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import { useAppDispatch } from "../redux/hooks";
 import { fetchUser } from "../redux/slices/user";
-
+import useGoBack from "./hooks/useGoBack";
 
 function Copyright(props: {sx: object}) {
   return (
@@ -44,6 +44,8 @@ export default function Login() {
   const [isLogged, setIsLogged] = useState(false);
   const dispatch = useAppDispatch()
 
+  const {previousUrl} = useGoBack()
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -66,7 +68,7 @@ export default function Login() {
   };
 
   if (isLogged) {
-    return <Navigate to="/resorts"/>;
+    return <Navigate to={`${previousUrl}`} />;
   }
 
   return (
