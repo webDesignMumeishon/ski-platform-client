@@ -2,67 +2,81 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { useAppSelector } from "../redux/hooks";
-import {IPost} from '../interfaces/post'
-import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
+import { IPost } from "../interfaces/post";
+import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import HTTP from "../eums/http";
 import LikeService from "../service/LikeService";
 
 type props = {
-    post : IPost
-}
+  post: IPost;
+};
 
-function SinglePost({post} : props){
-    const [likePost, setLikePost] = useState(0)
-    const [numberLikes, setNumberLikes] = useState(0)
+function SinglePost({ post }: props) {
+  const [likePost, setLikePost] = useState(0);
+  const [numberLikes, setNumberLikes] = useState(0);
 
   const fetchedUser = useAppSelector((state) => state.userReducer);
   const navigate = useNavigate();
 
-
-    const likePostHandler = async () => {
-        try{
-            if(likePost === 0 || likePost === null){
-                const response = await LikeService.likePost(post.id)
-                if(response.success){
-                    setLikePost(1)
-                    setNumberLikes(() => (numberLikes + 1))
-                }
-            }
-            else{
-                const response = await LikeService.unlikePost(post.id)
-                if(response.status === HTTP.STATUS_SUCCESS){
-                    setLikePost(0)
-                    setNumberLikes(() => (numberLikes - 1))
-                }
-            }
+  const likePostHandler = async () => {
+    try {
+      if (likePost === 0 || likePost === null) {
+        const response = await LikeService.likePost(post.id);
+        if (response.success) {
+          setLikePost(1);
+          setNumberLikes(() => numberLikes + 1);
         }
-        catch(err){
-            alert(err)
+      } else {
+        const response = await LikeService.unlikePost(post.id);
+        if (response.status === HTTP.STATUS_SUCCESS) {
+          setLikePost(0);
+          setNumberLikes(() => numberLikes - 1);
         }
+      }
+    } catch (err) {
+      alert(err);
     }
+  };
 
-    const handlePublicLike = () => {
-        navigate(`/login`);
-    }
+  const handlePublicLike = () => {
+    navigate(`/login`);
+  };
 
-    useEffect(() => {
-        setLikePost(post.did_like)
-        setNumberLikes(Number(post.number_likes))
-    }, [])
+  useEffect(() => {
+    setLikePost(post.did_like);
+    setNumberLikes(Number(post.number_likes));
+  }, []);
 
-    return (
-        <div className="post-container">
-            <div className="image-holder"><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Placerholder image" /></div>
-            <div className="post-icon-likes" onClick={fetchedUser.logged ? likePostHandler : handlePublicLike} >
-                <KeyboardArrowUpRoundedIcon fontSize="large" style={{color: likePost === 1 ? 'red': '', marginBottom: '12px', cursor: 'pointer'}}/>
-                <span className="text">{numberLikes}</span>         
-            </div>
-            <div className="post-title-container">
-                <Link to={`${post.id}`}>{post.title}</Link>
-                <p>{post.first_name} {post.last_name} · {post.number_comments} comments</p> 
-            </div>
-        </div>
-    )
+  return (
+    <div className="post-container">
+      <div className="image-holder">
+        <img
+          src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+          alt="Placerholder image"
+        />
+      </div>
+      <div
+        className="post-icon-likes"
+        onClick={fetchedUser.logged ? likePostHandler : handlePublicLike}
+      >
+        <KeyboardArrowUpRoundedIcon
+          fontSize="large"
+          style={{
+            color: likePost === 1 ? "red" : "",
+            marginBottom: "12px",
+            cursor: "pointer",
+          }}
+        />
+        <span className="text">{numberLikes}</span>
+      </div>
+      <div className="post-title-container">
+        <Link to={`${post.id}`}>{post.title}</Link>
+        <p>
+          {post.first_name} {post.last_name} · {post.number_comments} comments
+        </p>
+      </div>
+    </div>
+  );
 }
 
-export default SinglePost
+export default SinglePost;
