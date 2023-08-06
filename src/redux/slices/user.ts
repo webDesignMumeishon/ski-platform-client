@@ -12,7 +12,7 @@ const initialState: StateUserSlice = {
   lastName: "",
   email: "",
   p_enabled: false,
-  isLoading: true,
+  isLoading: false,
   logged: false,
 };
 
@@ -25,7 +25,7 @@ export const fetchUser = createAsyncThunk<IUser>("user/fetch", async () => {
     email: response.email,
     p_enabled: response.p_enabled,
     isLoading: false,
-    logged: response.code === 200 ? true : false,
+    logged: response.code === 200 ? true : false, //change this
   }
   return user
 });
@@ -59,9 +59,11 @@ export const userSlice = createSlice({
           isLoading: false,
         };
       })
-      .addCase(resetUserState, (state) => {
+      .addCase(resetUserState, () => {
         // Reset the state to the initial values without modifying other properties
-        Object.assign(state, initialState);
+        return {
+          ...initialState
+        }
       });
   },
 });
