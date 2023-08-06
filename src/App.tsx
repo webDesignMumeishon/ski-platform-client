@@ -6,6 +6,7 @@ import './App.css';
 import Navbar from './components/Navbar'
 
 function App() {
+  // check cookie before dispatching  
   const dispatch = useAppDispatch()
   dispatch(fetchUser())
   return (
