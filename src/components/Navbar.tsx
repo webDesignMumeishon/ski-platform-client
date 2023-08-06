@@ -7,18 +7,20 @@ import SearchBar from "./SearchBar";
 import SearchBarResults from "./SearchBarResults";
 import skibuds from "../assets/goggles.png";
 import useLogout from "./hooks/useLogout";
+import useGetLocation from "./hooks/useGetLocation";
 
 
 
 const Navbar = () => {
   const [resorts, setResorts] = useState<IResort[]>([]);
   const [isInputSelected, setIsInputSelected] = useState(false);
+  const currentUrl = useGetLocation();
 
   const {handleLogout, logged} = useLogout()
 
   const login = (
     <Grid item>
-      <Link to="/login">Login</Link>{" "}
+      <Link to="/login" state={currentUrl.state}>Login</Link>{" "}
     </Grid>
   );
 
