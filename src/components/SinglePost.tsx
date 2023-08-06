@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import { useAppSelector } from "../redux/hooks";
 import {IPost} from '../interfaces/post'
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import HTTP from "../eums/http";
@@ -13,6 +14,10 @@ type props = {
 function SinglePost({post} : props){
     const [likePost, setLikePost] = useState(0)
     const [numberLikes, setNumberLikes] = useState(0)
+
+  const fetchedUser = useAppSelector((state) => state.userReducer);
+  const navigate = useNavigate();
+
 
     const likePostHandler = async () => {
         try{
@@ -36,6 +41,10 @@ function SinglePost({post} : props){
         }
     }
 
+    const handlePublicLike = () => {
+        navigate(`/login`);
+    }
+
     useEffect(() => {
         setLikePost(post.did_like)
         setNumberLikes(Number(post.number_likes))
@@ -44,7 +53,7 @@ function SinglePost({post} : props){
     return (
         <div className="post-container">
             <div className="image-holder"><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="Placerholder image" /></div>
-            <div className="post-icon-likes" onClick={likePostHandler}>
+            <div className="post-icon-likes" onClick={fetchedUser.logged ? likePostHandler : handlePublicLike} >
                 <KeyboardArrowUpRoundedIcon fontSize="large" style={{color: likePost === 1 ? 'red': '', marginBottom: '12px', cursor: 'pointer'}}/>
                 <span className="text">{numberLikes}</span>         
             </div>
