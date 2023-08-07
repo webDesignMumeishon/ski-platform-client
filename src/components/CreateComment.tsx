@@ -20,6 +20,11 @@ const CreateComment = (props: Props) => {
     }
 
     const submitComment = async () => {
+
+        if(comment.length === 0){
+            alert('Need to type something')
+        }
+
         const {data} = await CommentService.createNewComment(props.postId, comment)
         const newComment : IComment = {
             id: data.id,
