@@ -15,7 +15,8 @@ interface Flags {
  
 
 const flags: Flags = {
-    "United States": "🇺🇸"
+    "United States": "🇺🇸",
+    "Canada": "🇨🇦"
 }
 
 const Resort = ({resort} : PropsType) => {
