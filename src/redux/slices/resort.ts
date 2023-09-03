@@ -35,7 +35,6 @@ export const resortSlice = createSlice({
     builder
     .addCase(fetchResort.pending, (state) => {
       state.isLoading = true;
-      state = initialState;
       return state
     })
     .addCase(fetchResort.fulfilled, (state, action) => {
