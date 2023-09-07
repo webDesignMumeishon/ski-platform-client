@@ -19,7 +19,6 @@ export default createBrowserRouter([
     path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
-    // loader: userLoader,
     children: [
       {
         path: '/',

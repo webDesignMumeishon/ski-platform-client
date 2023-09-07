@@ -1,8 +1,10 @@
 export interface IResort {
-    id: number,
-    state: string,
+    id: number
+    state: string
     city: string
-    country: string;
+    code: string
+    flag: string
+    country: string
 }
 
 export type TResortRequest = {
