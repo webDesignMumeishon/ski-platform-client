@@ -1,3 +1,4 @@
+import React from 'react';
 import { Grid } from "@mui/material"
 import { Box } from "@mui/system"
 
@@ -18,7 +19,7 @@ interface ResortReportProps{
 
 type ResortReportPropsKeys = keyof ResortReportProps;
 
-const ResortReport = (props: ResortReportProps) => {
+const ResortReport = React.memo((props: ResortReportProps) => {
 
     const reportElements = Object.keys(props) as unknown as ResortReportPropsKeys[];
 
@@ -56,6 +57,6 @@ const ResortReport = (props: ResortReportProps) => {
             </Box>
         </div>
     )
-}
+})
 
 export default ResortReport
